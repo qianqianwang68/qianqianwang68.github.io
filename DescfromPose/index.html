@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <title>Learning Feature Descriptors using Camera Pose Supervision</title>
+</head>
+<body>
+<div class="container mt-5">
+    <h1 style="text-align:center">
+        Learning Feature Descriptors using Camera Pose Supervision </h1>
+    <h5 style="text-align:center" class="text-muted mt-4"> Qianqian Wang<sup>1,2</sup>, Xiaowei Zhou<sup>3</sup>, Bharath Hariharan<sup>1</sup>, Noah Snavely<sup>1,2</sup></h5>
+    <h5 style="text-align:center" class="text-muted mt-3"><sup>1</sup> Cornell University,  <sup>2</sup> Cornell Tech, <sup>3</sup> Zhejiang University</h5>
+</div>
+
+<div class="container mt-5">
+    <div class="row">
+        <figure>
+            <img class="img-fluid" src="teaser_eccv.jpg">
+        </figure>
+    </div>
+</div>
+
+
+
+<div class="container mt-5">
+    <div class="row">
+    <h2>
+        Abstract
+    </h2></div>
+    <div class="row">
+    <p style="text-align:justify; class="mt-3">
+    Recent research on learned visual descriptors has shown promising improvements in correspondence estimation, a key component of many 3D vision tasks. However, existing descriptor learning frameworks typically require ground-truth correspondences between feature points for training, which are challenging to acquire at scale. In this paper we propose a novel <em>weakly-supervised</em> framework that can learn feature descriptors <em>solely</em> from relative camera poses between images. To do so, we devise both a new loss function that exploits the epipolar constraint given by camera poses, and a new model architecture that makes the whole pipeline differentiable and efficient. Because we no longer need pixel-level ground-truth correspondences, our framework opens up the possibility of training on much larger and more diverse datasets for better and unbiased descriptors. Though trained with weak supervision, our learned descriptors outperform even prior <em>fully-supervised</em> methods and achieve state-of-the-art performance on a variety of geometric tasks. <b>Code and model will be made available soon. </b>
+
+
+<div class="container mt-5">
+    <div class="row">
+    <h2>Paper</h2></div>
+    <div class="row" align="center">
+        <a href=""><img class="w-75" src="pdf_thumbnail.jpg"></a>
+    </div>
+</div>
+
+
+<div class="container mt-5">
+    <div class="row">
+        <h2>Experimental Results</h2>
+    </div>
+    <br>
+    <div class="row">
+        <h4>Sparse feature matching</h4>
+        <figure>
+        <img class="img-fluid" src="sparse_match.jpg">
+        </figure>
+    </div>
+    <br>
+    <div class="row">
+        <h4>Dense feature matching</h4>
+        <figure>
+            <img class="img-fluid" src="dense_correspondence.jpg">
+        </figure>
+    </div>
+    <br>
+    <br>
+</div>
+
+
+ <div class="row">
+        <h4>A live interative demo of our system finding correspondences</h4>
+        </div>
+<div align="center" class="container mt-5">
+    <div class="embed-responsive embed-responsive-16by9">
+    <iframe src="https://drive.google.com/file/d/1E65AXeCFr-H0A4SNcv8cZkLov3wXsrFC/preview"  frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen width="640" height="480"></iframe>
+    </div>
+</div>
+
+<div class="container mt-5">
+    <div class="row">
+    <h2>
+        Citation
+    </h2></div>
+    <pre>
+    </pre>
+
+
+
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+
+
+</body>
+</html>

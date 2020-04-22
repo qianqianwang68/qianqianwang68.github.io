@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Qianqian Wang on Qianqian Wang</title>
-    <link>https:///qianqianwang68.github.io/</link>
+    <link>http://www.cs.cornell.edu/~qqw/</link>
     <description>Recent content in Qianqian Wang on Qianqian Wang</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2018</copyright>
     <lastBuildDate>Sun, 15 Oct 2017 00:00:00 -0400</lastBuildDate>
-    <atom:link href="/qianqianwang68.github.io/" rel="self" type="application/rss+xml" />
+    <atom:link href="/~qqw/" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Multi-Image Semantic Matching by Mining Consistent Features</title>
-      <link>https:///qianqianwang68.github.io/publication/multi2018wang/</link>
+      <link>http://www.cs.cornell.edu/~qqw/publication/multi2018wang/</link>
       <pubDate>Sun, 09 Sep 2018 21:02:54 -0400</pubDate>
       
-      <guid>https:///qianqianwang68.github.io/publication/multi2018wang/</guid>
+      <guid>http://www.cs.cornell.edu/~qqw/publication/multi2018wang/</guid>
       <description></description>
     </item>
     
