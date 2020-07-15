@@ -1,16 +1,23 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Recent &amp; Upcoming Talks on Qianqian Wang</title>
-    <link>https://qianqianwang68.github.io/talk/</link>
-    <description>Recent content in Recent &amp; Upcoming Talks on Qianqian Wang</description>
+    <title>Qianqian Wang on Qianqian Wang</title>
+    <link>https://qianqianwang68.github.io/</link>
+    <description>Recent content in Qianqian Wang on Qianqian Wang</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2018</copyright>
-    <lastBuildDate>Sun, 01 Jan 2017 00:00:00 -0500</lastBuildDate>
+    <lastBuildDate>Sun, 15 Oct 2017 00:00:00 -0400</lastBuildDate>
+    <atom:link href="/" rel="self" type="application/rss+xml" />
     
-	<atom:link href="https://qianqianwang68.github.io/talk/index.xml" rel="self" type="application/rss+xml" />
-    
+    <item>
+      <title>Multi-Image Semantic Matching by Mining Consistent Features</title>
+      <link>https://qianqianwang68.github.io/publication/multi2018wang/</link>
+      <pubDate>Sun, 09 Sep 2018 21:02:54 -0400</pubDate>
+      
+      <guid>https://qianqianwang68.github.io/publication/multi2018wang/</guid>
+      <description></description>
+    </item>
     
   </channel>
 </rss>
