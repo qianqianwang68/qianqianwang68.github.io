@@ -25,14 +25,14 @@
 }
 
 html {
-  font-family: 'Merriweather', sans-serif;
-  font-size: 16px;
+  font-family: 'Lato', sans-serif;
+  font-size: 15px;
   color: rgba(0,0,0,0.8);
   line-height: 1.65;
 }
 @media screen and (min-width: 58em) {
   html {
-    font-size: 16px;
+    font-size: 17px;
   }
 }
 
@@ -96,7 +96,7 @@ h1, h2, h3, h4, h5, h6 {
   overflow-wrap: break-word; /* Ensures very long heading words do not overflow into content. */
 }
 h1 {
-  font-size: 2.25rem;
+  font-size: 1.7rem;
 }
 h2 {
   margin-top: 1rem;
@@ -780,7 +780,7 @@ article .article-metadata {
 
 .pub-icon {
   color: rgba(0, 0, 0, 0.54);
-  font-size: 0.81em;
+  font-size: 1em;
   padding-top: 6px;
 }
 
@@ -1218,7 +1218,7 @@ a.label:hover {
 }
 
 nav#navbar-main li {
-  font-size: 16px;
+  font-size: 15px;
 }
 
 .navbar-default .navbar-nav>li>a,
