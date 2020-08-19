@@ -2,40 +2,40 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>1 on Qianqian Wang</title>
-    <link>http://www.cs.cornell.edu/~qqw/publication_types/1/</link>
+    <link>https://qianqianwang68.github.io/publication_types/1/</link>
     <description>Recent content in 1 on Qianqian Wang</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2018</copyright>
     <lastBuildDate>Sun, 09 Aug 2020 21:02:54 -0400</lastBuildDate>
     
-	<atom:link href="http://www.cs.cornell.edu/~qqw/publication_types/1/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://qianqianwang68.github.io/publication_types/1/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Learning Feature Descriptors using Camera Pose Supervision</title>
-      <link>http://www.cs.cornell.edu/~qqw/publication/eccv2020matching/</link>
+      <link>https://qianqianwang68.github.io/publication/eccv2020matching/</link>
       <pubDate>Sun, 09 Aug 2020 21:02:54 -0400</pubDate>
       
-      <guid>http://www.cs.cornell.edu/~qqw/publication/eccv2020matching/</guid>
+      <guid>https://qianqianwang68.github.io/publication/eccv2020matching/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Hidden Footprints: Learning Contextual Walkability from 3D Human Trails</title>
-      <link>http://www.cs.cornell.edu/~qqw/publication/eccv2020human/</link>
+      <link>https://qianqianwang68.github.io/publication/eccv2020human/</link>
       <pubDate>Sat, 08 Aug 2020 21:02:54 -0400</pubDate>
       
-      <guid>http://www.cs.cornell.edu/~qqw/publication/eccv2020human/</guid>
+      <guid>https://qianqianwang68.github.io/publication/eccv2020human/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Multi-Image Semantic Matching by Mining Consistent Features</title>
-      <link>http://www.cs.cornell.edu/~qqw/publication/multi2018wang/</link>
+      <link>https://qianqianwang68.github.io/publication/multi2018wang/</link>
       <pubDate>Sun, 09 Sep 2018 21:02:54 -0400</pubDate>
       
-      <guid>http://www.cs.cornell.edu/~qqw/publication/multi2018wang/</guid>
+      <guid>https://qianqianwang68.github.io/publication/multi2018wang/</guid>
       <description></description>
     </item>
     

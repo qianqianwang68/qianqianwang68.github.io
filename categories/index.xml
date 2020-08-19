@@ -2,13 +2,13 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on Qianqian Wang</title>
-    <link>http://www.cs.cornell.edu/~qqw/categories/</link>
+    <link>https://qianqianwang68.github.io/categories/</link>
     <description>Recent content in Categories on Qianqian Wang</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2018</copyright>
     
-	<atom:link href="http://www.cs.cornell.edu/~qqw/categories/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://qianqianwang68.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     
     
   </channel>
