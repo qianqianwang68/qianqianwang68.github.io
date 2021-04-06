@@ -7,10 +7,37 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2018</copyright>
-    <lastBuildDate>Sun, 09 Aug 2020 21:02:54 -0400</lastBuildDate>
+    <lastBuildDate>Thu, 25 Feb 2021 21:02:54 -0400</lastBuildDate>
     
 	<atom:link href="https://qianqianwang68.github.io/publication_types/1/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>IBRNet: Learning Multi-View Image-Based Rendering</title>
+      <link>https://qianqianwang68.github.io/publication/cvpr2021_ibrnet/</link>
+      <pubDate>Thu, 25 Feb 2021 21:02:54 -0400</pubDate>
+      
+      <guid>https://qianqianwang68.github.io/publication/cvpr2021_ibrnet/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>PhySG: Inverse Rendering with Spherical Gaussians for Physics-based Material Editing and Relighting</title>
+      <link>https://qianqianwang68.github.io/publication/cvpr2021_physg/</link>
+      <pubDate>Wed, 24 Feb 2021 21:02:54 -0400</pubDate>
+      
+      <guid>https://qianqianwang68.github.io/publication/cvpr2021_physg/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Neural Body: Implicit Neural Representations with Structured Latent Codes for Novel View Synthesis of Dynamic Humans</title>
+      <link>https://qianqianwang68.github.io/publication/neuralbody2021/</link>
+      <pubDate>Mon, 22 Feb 2021 21:02:54 -0400</pubDate>
+      
+      <guid>https://qianqianwang68.github.io/publication/neuralbody2021/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Learning Feature Descriptors using Camera Pose Supervision</title>

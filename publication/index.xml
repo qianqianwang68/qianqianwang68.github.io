@@ -14,10 +14,19 @@
     
     <item>
       <title>IBRNet: Learning Multi-View Image-Based Rendering</title>
-      <link>https://qianqianwang68.github.io/publication/ibrnet2021/</link>
+      <link>https://qianqianwang68.github.io/publication/cvpr2021_ibrnet/</link>
       <pubDate>Thu, 25 Feb 2021 21:02:54 -0400</pubDate>
       
-      <guid>https://qianqianwang68.github.io/publication/ibrnet2021/</guid>
+      <guid>https://qianqianwang68.github.io/publication/cvpr2021_ibrnet/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>PhySG: Inverse Rendering with Spherical Gaussians for Physics-based Material Editing and Relighting</title>
+      <link>https://qianqianwang68.github.io/publication/cvpr2021_physg/</link>
+      <pubDate>Wed, 24 Feb 2021 21:02:54 -0400</pubDate>
+      
+      <guid>https://qianqianwang68.github.io/publication/cvpr2021_physg/</guid>
       <description></description>
     </item>
     
