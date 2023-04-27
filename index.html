@@ -20,7 +20,7 @@
               <p style="text-align:center">
                 <name>Qianqian Wang</name>
               </p>
-              <p>I am a fourth-year Ph.D. student in Computer Science at <a href="https://tech.cornell.edu/">Cornell Tech</a>, <a href="https://www.cornell.edu/">Cornell University</a>, advised by Prof. <a href="http://www.cs.cornell.edu/~snavely/">Noah Snavely</a> and Prof. <a href="http://home.bharathh.info/">Bharath Hariharan</a>. Before that I received my bachelor's degree from <a href="https://www.zju.edu.cn/english/">Zhejiang University, </a> advised by Prof. <a href="https://xzhou.me/">Xiaowei Zhou</a>. I am a recipient of 2022 <a href="https://research.google/outreach/phd-fellowship/">Google PhD fellowship</a>. 
+              <p>I am a final-year Ph.D. student in Computer Science at <a href="https://tech.cornell.edu/">Cornell Tech</a>, <a href="https://www.cornell.edu/">Cornell University</a>, advised by Prof. <a href="http://www.cs.cornell.edu/~snavely/">Noah Snavely</a> and Prof. <a href="http://home.bharathh.info/">Bharath Hariharan</a>. Before that I received my bachelor's degree from <a href="https://www.zju.edu.cn/english/">Zhejiang University, </a> advised by Prof. <a href="https://xzhou.me/">Xiaowei Zhou</a>. I am a recipient of 2022 <a href="https://research.google/outreach/phd-fellowship/">Google PhD fellowship</a>. 
 
               <p>
               My research lie at the intersection of 3D Computer Vision, Computer Graphics, and Machine Learning. 
@@ -30,7 +30,7 @@
               </p>
               <p style="text-align:center">
                 <a href="mailto:qw246@cornell.edu">Email</a> &nbsp/&nbsp
-                <a href="data/qianiqanwang_cv.pdf">CV</a> &nbsp/&nbsp
+                <a href="data/qianqianwang_cv.pdf">CV</a> &nbsp/&nbsp
                 <a href="https://scholar.google.com/citations?user=VdmfIeUAAAAJ&hl=en">Google Scholar</a> &nbsp/&nbsp
                 <a href="https://twitter.com/QianqianWang5">Twitter</a> &nbsp/&nbsp
                 <a href="https://github.com/qianqianwang68">Github</a>
@@ -50,23 +50,150 @@
         </tbody></table>
         <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
 
+        <tr onmouseout="dynibar_stop()" onmouseover="dynibar_start()">
+            <td style="padding:20px;width:25%;vertical-align:middle">
+              <div class="one">
+                <div class="two" id='dynibar_image'><video  width=100% height=100% muted autoplay loop>
+                <source src="images/dynibar.mp4" type="video/mp4">
+                </video></div>
+                <img src='images/dynibar.jpg' id='dynibar_before' width=160 >
+              </div>
+              <script type="text/javascript">
+                function dynibar_start() {
+                  document.getElementById('dynibar_image').style.opacity = "1";
+                }
+
+                function dynibar_stop() {
+                  document.getElementById('dynibar_image').style.opacity = "0";
+                }
+                dynibar_stop()
+              </script>
+            </td>
+
+            <td style="padding:20px;width:75%;vertical-align:middle">
+              <a href="https://dynibar.github.io/">
+                <papertitle>DynIBaR: Neural Dynamic Image-Based Rendering</papertitle>
+              </a>
+              <br>
+              <a href="https://zhengqili.github.io/">Zhengqi Li</a>, 
+              <strong>Qianqian Wang</strong>,
+              <a href="https://people.csail.mit.edu/fcole/">Forrester Cole</a>,
+              <a href="https://research.google/people/RichardTucker/">Richard Tucker</a>,
+              <a href="https://www.cs.cornell.edu/~snavely/">Noah Snavely</a>
+              <br>
+              <em>CVPR</em>, 2023 <strong>(Award Candiate)</strong>
+              <br>
+
+              <a href="https://dynibar.github.io/">project page</a> / 
+              <a href="https://arxiv.org/pdf/2211.11082.pdf">arXiv</a> / 
+              <a href="">code</a>      
+              <p></p>
+            </td>
+          </tr>
+
+        <tr onmouseout="inf_zero_stop()" onmouseover="inf_zero_start()">
+            <td style="padding:20px;width:25%;vertical-align:middle">
+              <div class="one">
+                <div class="two" id='inf_zero_image'><video  width=100% height=100% muted autoplay loop>
+                <source src="images/inf_zero.mp4" type="video/mp4">
+                </video></div>
+                <img src='images/inf_zero.jpg' id='inf_zero_before' width=100% >
+              </div>
+              <script type="text/javascript">
+                function inf_zero_start() {
+                  document.getElementById('inf_zero_image').style.opacity = "1";
+                }
+
+                function inf_zero_stop() {
+                  document.getElementById('inf_zero_image').style.opacity = "0";
+                }
+                inf_zero_stop()
+              </script>
+            </td>
+
+            <td style="padding:20px;width:75%;vertical-align:middle">
+              <a href="https://infinite-nature-zero.github.io/">
+                <papertitle>InfiniteNature-Zero: Learning Perpetual View Generation of Natural Scenes from Single Images</papertitle>
+              </a>
+              <br>
+              <a href="https://zhengqili.github.io/">Zhengqi Li</a>, 
+              <strong>Qianqian Wang</strong>,
+              <a href="https://www.cs.cornell.edu/~snavely/">Noah Snavely</a>,
+              <a href="https://people.eecs.berkeley.edu/~kanazawa/">Angjoo Kanazawa</a>
+              <br>
+              <em>ECCV</em>, 2022 <strong>(Oral Presentation)</strong>
+              <br>
+
+              <a href="https://infinite-nature-zero.github.io/">project page</a> / 
+              <a href="https://arxiv.org/pdf/2207.11148.pdf">arXiv</a> / 
+              <a href="https://github.com/google-research/google-research/tree/master/infinite_nature_zero/">code</a>      
+              <p></p>
+            </td>
+          </tr>
+
+
+          <tr onmouseout="neural_recon_stop()" onmouseover="neural_recon_start()">
+            <td style="padding:20px;width:25%;vertical-align:middle">
+              <div class="one">
+                <div class="two" id='neuconw_image'><video  width=100% height=100% muted autoplay loop>
+                <source src="images/neuconw.mp4" type="video/mp4">
+                </video></div>
+                <img src='images/neuconw.png' id='neuconw_before' width=100% >
+              </div>
+              <script type="text/javascript">
+                function neural_recon_start() {
+                  document.getElementById('neuconw_image').style.opacity = "1";
+                  document.getElementById('neuconw_before').style.opacity = "0";
+                }
+
+                function neural_recon_stop() {
+                  document.getElementById('neuconw_image').style.opacity = "0";
+                  document.getElementById('neuconw_before').style.opacity = "1";
+                }
+                neural_recon_stop()
+              </script>
+            </td>
+
+            <td style="padding:20px;width:75%;vertical-align:middle">
+              <a href="https://zju3dv.github.io/neuralrecon-w/">
+                <papertitle>Neural 3D reconstruction in the wild</papertitle>
+              </a>
+              <br>
+              <a href="https://jiamingsun.ml/">Jiaming Sun</a>,
+              <a href="https://github.com/BurningDust21">Xi Chen</a>,
+              <strong>Qianqian Wang</strong>,
+              <a href="https://zhengqili.github.io/">Zhengqi Li</a>, 
+              <a href="https://www.elor.sites.tau.ac.il/">Hadar Averbuch-Elor</a>,
+              <a href="https://xzhou.me/">Xiaowei Zhou</a>,
+              <a href="https://www.cs.cornell.edu/~snavely/">Noah Snavely</a>
+              <br>
+              <em>SIGGRAPH (Conference Proceedings)</em>, 2022 
+              <br>
+
+              <a href="https://zju3dv.github.io/neuralrecon-w/">project page</a> / 
+              <a href="https://arxiv.org/pdf/2205.12955.pdf">arXiv</a> / 
+              <a href="https://github.com/zju3dv/NeuralRecon-W/">code</a>      
+              <p></p>
+            </td>
+          </tr>
+
           <tr onmouseout="three_d_moments_stop()" onmouseover="three_d_moments_start()">
             <td style="padding:20px;width:25%;vertical-align:middle">
               <div class="one">
                 <div class="two" id='3d_moments_image'><video  width=100% height=100% muted autoplay loop>
                 <source src="images/3d_moments.mp4" type="video/mp4">
                 </video></div>
-                <img src='images/3d_moments.png' id='img' width="160" >
+                <img src='images/3d_moments.png' id='3d_moments_before' width="160" >
               </div>
               <script type="text/javascript">
                 function three_d_moments_start() {
                   document.getElementById('3d_moments_image').style.opacity = "1";
-                  document.getElementById('img').style.opacity = "0";
+                  document.getElementById('3d_moments_before').style.opacity = "0";
                 }
 
                 function three_d_moments_stop() {
                   document.getElementById('3d_moments_image').style.opacity = "0";
-                  document.getElementById('img').style.opacity = "1";
+                  document.getElementById('3d_moments_before').style.opacity = "1";
                 }
                 three_d_moments_stop()
               </script>
@@ -90,7 +217,7 @@
 
 							<a href="https://3d-moments.github.io/">project page</a> / 
 							<a href="https://arxiv.org/abs/2205.06255">arXiv</a> / 
-							<a href="">code (coming)</a> 			
+							<a href="https://github.com/google-research/3d-moments">code</a> 			
               <p></p>
             </td>
           </tr>
@@ -114,7 +241,7 @@
               <a href="http://www.cad.zju.edu.cn/home/bao/">Hujun Bao</a>,
               <a href="https://xzhou.me/">Xiaowei Zhou</a>
               <br>
-							<em>CVPR</em>, 2022 &nbsp <font color="red"><strong>(Oral Presentation)</strong></font>
+							<em>CVPR</em>, 2022 &nbsp <strong>(Oral Presentation)</strong>
               <br>
               <a href="https://zju3dv.github.io/manhattan_sdf/">project page</a>
               /
@@ -316,7 +443,7 @@
                <a href="http://www.cad.zju.edu.cn/home/bao/">Hujun Bao</a>, 
               <a href="https://xzhou.me/">Xiaowei Zhou</a>
               <br>
-        <em>CVPR</em>, 2022 &nbsp <font color="red"><strong>(Best Paper Candidate)</strong></font>
+        <em>CVPR</em>, 2022 &nbsp <strong>(Best Paper Candidate)</strong>
               <br>
               <a href="https://zju3dv.github.io/neuralbody/">project page</a>
         /
@@ -344,7 +471,7 @@
               <a href="http://home.bharathh.info/">Bharath Hariharan</a>,
               <a href="https://www.cs.cornell.edu/~snavely/">Noah Snavely</a>
               <br>
-        <em>ECCV</em>, 2020 &nbsp <font color="red"><strong>(Oral Presentation)</strong></font>
+        <em>ECCV</em>, 2020 &nbsp <strong>(Oral Presentation)</strong>
               <br>
               <a href="https://qianqianwang68.github.io/CAPS/">project page</a>
         /
@@ -367,7 +494,7 @@
               </a>
               <br>
               <a href="https://www.cs.cornell.edu/~jinsun/">Jin Sun</a>,
-              <a href="https://www.cs.cornell.edu/~hadarelor/">Hadar Averbuch-Elor</a>,
+              <a href="https://www.elor.sites.tau.ac.il/">Hadar Averbuch-Elor</a>,
               <strong>Qianqian Wang</strong>,
               <a href="https://www.cs.cornell.edu/~snavely/">Noah Snavely</a>
               <br>
