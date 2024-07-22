@@ -45,6 +45,95 @@
         </tbody></table>
         <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
 
+        <tr onmouseout="som_stop()" onmouseover="som_start()">
+          <td style="padding:20px;width:25%;vertical-align:middle">
+            <div class="one">
+              <div class="two" id='som_image'><video  width=100% height=100% muted autoplay loop>
+              <source src="images/som.mp4" type="video/mp4">
+              </video></div>
+              <img src='images/som.jpg' id='som_before' width=160 >
+            </div>
+            <script type="text/javascript">
+              function som_start() {
+                document.getElementById('som_image').style.opacity = "1";
+              }
+
+              function som_stop() {
+                document.getElementById('som_image').style.opacity = "0";
+              }
+              som_stop()
+            </script>
+          </td>
+
+          <td style="padding:20px;width:75%;vertical-align:middle">
+            <a href="https://shape-of-motion.github.io/">
+              <papertitle> Shape of Motion: 4D Reconstruction from a Single Video </papertitle>
+            </a>
+            <br>
+            <strong>Qianqian Wang</strong>*,
+            <a href="https://people.eecs.berkeley.edu/~vye/">Vickie Ye*</a>,
+            <a href="https://hangg7.com/">Hang Gao*</a>,
+            <a href="https://www.linkedin.com/in/jakeaustin4701/">Jake Austin</a>,
+            <a href="https://zhengqili.github.io/">Zhengqi Li</a>,
+            <a href="https://people.eecs.berkeley.edu/~kanazawa/">Angjoo Kanazawa</a>
+            <br>
+            <span style="display: none;">&nbsp;</span>
+            <em>arXiv</em>, 2024
+            <br>
+            <a href="https://shape-of-motion.github.io/">project page</a>
+            /
+            <a href="https://arxiv.org/abs/2407.13764">arXiv</a>
+            /
+            <a href="https://github.com/vye16/shape-of-motion/">code</a>
+            <p></p>
+          </td>
+        </tr>
+
+        <tr onmouseout="spatialtracker_stop()" onmouseover="spatialtracker_start()">
+          <td style="padding:20px;width:25%;vertical-align:middle">
+            <div class="one">
+              <div class="two" id='spatialtracker_image'><video  width=100% height=100% muted autoplay loop>
+              <source src="images/spatial_tracker.mp4" type="video/mp4">
+              </video></div>
+              <img src='images/spatial_tracker.jpg' id='spatialtracker_before' width=160 >
+            </div>
+            <script type="text/javascript">
+              function spatialtracker_start() {
+                document.getElementById('spatialtracker_image').style.opacity = "1";
+              }
+
+              function spatialtracker_stop() {
+                document.getElementById('spatialtracker_image').style.opacity = "0";
+              }
+              spatialtracker_stop()
+            </script>
+          </td>
+
+          <td style="padding:20px;width:75%;vertical-align:middle">
+            <a href="https://henry123-boy.github.io/SpaTracker/">
+              <papertitle> SpatialTracker: Tracking Any 2D Pixels in 3D Space </papertitle>
+            </a>
+            <br>
+            <a href="https://henry123-boy.github.io/">Yuxi Xiao</a>*,
+            <strong>Qianqian Wang</strong>*,
+            <a href="https://zhanghe3z.github.io/">Shangzhan Zhang</a>,
+            <a href="https://xuenan.net/">Nan Xue</a>,
+            <a href="https://pengsida.net/">Sida Peng</a>,
+            <a href="https://shenyujun.github.io/">Yujun Shen</a><sup>†</sup>,
+            <a href="https://xzhou.me/">Xiaowei Zhou</a><sup>†</sup>
+            <br>
+            <span style="display: none;">&nbsp;</span>
+            <em>CVPR</em>, 2024 (<strong>highlight</strong>)
+            <br>
+            <a href="https://henry123-boy.github.io/SpaTracker/">project page</a>
+            /
+            <a href="https://henry123-boy.github.io/SpaTracker/SpatialTracker_files/pdf/spatracker.pdf">arXiv</a>
+            /
+            <a href="https://henry123-boy.github.io/SpaTracker/">code</a>
+            <p></p>
+          </td>
+        </tr>
+
         <tr onmouseout="dift_stop()" onmouseover="dift_start()">
             <td style="padding:20px;width:25%;vertical-align:middle">
               <div class="one">
