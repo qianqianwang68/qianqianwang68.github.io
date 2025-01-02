@@ -1,807 +1,1216 @@
 <!DOCTYPE HTML>
-<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <title>Qianqian Wang</title>
   
   <meta name="author" content="Qianqian Wang">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   
   <link rel="stylesheet" type="text/css" href="stylesheet.css">
-	<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌐</text></svg>">
+  <link rel="icon" href="images/icon.png" type="image/svg+xml">
 </head>
 
+<script type="text/javascript">
+    function showPubs(id) {
+        if (id == 0) {
+            // show selected
+            document.getElementById('pubs').innerHTML = document.getElementById('pubs_selected').innerHTML;
+            document.getElementById('select0').style = 'text-decoration:underline;color:#000000';
+            document.getElementById('select1').style = '';
+        } else if (id == 1) {
+            // show all by date
+            document.getElementById('pubs').innerHTML = document.getElementById('pubs_by_date').innerHTML;
+            document.getElementById('select1').style = 'text-decoration:underline;color:#000000';
+            document.getElementById('select0').style = '';
+        }
+    }
+    
+    // Set the default view to "show selected" when the page loads
+    window.onload = function() {
+        showPubs(0);
+    }
+</script>
+
 <body>
-  <table style="width:100%;max-width:800px;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-    <tr style="padding:0px">
-      <td style="padding:0px">
-        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-          <tr style="padding:0px">
-            <td style="padding:2.5%;width:63%;vertical-align:middle">
-              <p style="text-align:center">
-                <name>Qianqian Wang</name>
-              </p>
-              I am a postdoctoral researcher at <a href="https://www.berkeley.edu/">UC Berkeley</a>, working with <a href="https://people.eecs.berkeley.edu/~kanazawa/">Prof. Angjoo Kanazawa</a> and <a href="https://people.eecs.berkeley.edu/~efros/">Prof. Alyosha Efros</a>. Additionally, I'm a visiting researcher at <a href="https://research.google/">Google Research</a>. I completed my PhD in Computer Science at <a href="https://tech.cornell.edu/">Cornell Tech</a>, <a href="https://www.cornell.edu/">Cornell University</a> with my advisors <a href="http://www.cs.cornell.edu/~snavely/">Prof. Noah Snavely</a> and <a href="http://home.bharathh.info/">Prof. Bharath Hariharan</a>. Before that I received my bachelor's degree from <a href="https://www.zju.edu.cn/english/">Zhejiang University, </a> where I worked with <a href="https://xzhou.me/">Prof. Xiaowei Zhou</a>. 
+  <table style="width:100%;max-width:800px;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+    <tbody>
+      <tr style="padding:0px">
+        <td style="padding:0px">
+          <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+            <tbody>
+              <tr style="padding:0px">
+                <td style="padding:2.5%;width:63%;vertical-align:middle">
+                  <p style="text-align:center">
+                    <name>Qianqian Wang</name>
+                  </p>
+                  I am a postdoctoral researcher at <a href="https://www.berkeley.edu/">UC Berkeley</a>, working with 
+                  <a href="https://people.eecs.berkeley.edu/~kanazawa/">Prof. Angjoo Kanazawa</a> and 
+                  <a href="https://people.eecs.berkeley.edu/~efros/">Prof. Alexei A. Efros</a>. Additionally, I'm a research consultant at 
+                  <a href="https://deepmind.google/">Google DeepMind</a>. I completed my PhD in Computer Science at 
+                  <a href="https://tech.cornell.edu/">Cornell Tech</a>, <a href="https://www.cornell.edu/">Cornell University</a> with 
+                  my advisors <a href="http://www.cs.cornell.edu/~snavely/">Prof. Noah Snavely</a> and 
+                  <a href="http://home.bharathh.info/">Prof. Bharath Hariharan</a>. Before that I received my bachelor's degree from 
+                  <a href="https://www.zju.edu.cn/english/">Zhejiang University,</a> working with 
+                  <a href="https://xzhou.me/">Prof. Xiaowei Zhou</a>.
+                  <p>
+                    My current research focuses on understanding and modeling the dynamic 3D world from everyday images and videos.
+                    My long-term research goal is to build intelligent systems that can perceive, understand and continually learn from the complex, ever-changing physical world.
+                  </p>
+                  <p>
+                    <strong>I am on the academic job market this year (2024-2025).</strong> 
+                  </p>
+                  <p style="text-align:center">
+                    <a href="mailto:qianqianwang@berkeley.edu">Email</a> &nbsp;/&nbsp;
+                    <a href="data/qianqianwang_cv.pdf">CV</a> &nbsp;/&nbsp;
+                    <a href="https://scholar.google.com/citations?user=VdmfIeUAAAAJ&hl=en">Google Scholar</a> &nbsp;/&nbsp;
+                    <a href="https://twitter.com/QianqianWang5">Twitter</a> &nbsp;/&nbsp;
+                    <a href="https://github.com/qianqianwang68">Github</a>
+                  </p>
+                </td>
+                <td style="padding:2.5%;width:25%;max-width:25%">
+                  <a href="images/QianqianWang.jpg">
+                    <img style="width:100%;max-width:100%" alt="profile photo" src="images/QianqianWang.jpg" class="hoverZoomLink">
+                  </a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
 
-              </p>
-              <p style="text-align:center">
-                <a href="mailto:qianqianwang@berkeley.edu">Email</a> &nbsp/&nbsp
-                <a href="data/qianqianwang_cv.pdf">CV</a> &nbsp/&nbsp
-                <a href="https://scholar.google.com/citations?user=VdmfIeUAAAAJ&hl=en">Google Scholar</a> &nbsp/&nbsp
-                <a href="https://twitter.com/QianqianWang5">Twitter</a> &nbsp/&nbsp
-                <a href="https://github.com/qianqianwang68">Github</a>
-              </p>
-            </td>
-            <td style="padding:2.5%;width:25%;max-width:25%">
-              <a href="images/QianqianWang.jpg"><img style="width:100%;max-width:100%" alt="profile photo" src="images/QianqianWang.jpg" class="hoverZoomLink"></a>
-            </td>
-          </tr>
-        </tbody></table>
-        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-            <tr>
-            <td style="padding:20px;width:100%;vertical-align:middle">
-              <heading>Research</heading>
-            </td>
-          </tr>
-        </tbody></table>
-        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+          <!-- Publications heading with two buttons -->
+          <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+            <tbody>
+              <tr>
+                <td style="padding:20px;width:100%;vertical-align:middle">
+                  <heading>
+                    Publications 
+                  </heading>
+                  &nbsp;(<a href="javascript:showPubs(0)" id="select0">show selected</a> / 
+                  <a href="javascript:showPubs(1)" id="select1">show all by date</a>)
+                </td>
+              </tr>
+            </tbody>
+          </table>
 
-        <tr onmouseout="som_stop()" onmouseover="som_start()">
-          <td style="padding:20px;width:25%;vertical-align:middle">
-            <div class="one">
-              <div class="two" id='som_image'><video  width=100% height=100% muted autoplay loop>
-              <source src="images/som.mp4" type="video/mp4">
-              </video></div>
-              <img src='images/som.jpg' id='som_before' width=160 >
-            </div>
-            <script type="text/javascript">
-              function som_start() {
-                document.getElementById('som_image').style.opacity = "1";
-              }
+          <!-- This is where publications will be dynamically inserted -->
+          <div id="pubs"></div>
 
-              function som_stop() {
-                document.getElementById('som_image').style.opacity = "0";
-              }
-              som_stop()
-            </script>
-          </td>
+          <!-- Hidden container: first two publications only (show selected) -->
+          <div id="pubs_selected" style="display:none;">
+            <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+              <tbody>
 
-          <td style="padding:20px;width:75%;vertical-align:middle">
-            <a href="https://shape-of-motion.github.io/">
-              <papertitle> Shape of Motion: 4D Reconstruction from a Single Video </papertitle>
-            </a>
-            <br>
-            <strong>Qianqian Wang</strong>*,
-            <a href="https://people.eecs.berkeley.edu/~vye/">Vickie Ye*</a>,
-            <a href="https://hangg7.com/">Hang Gao*</a>,
-            <a href="https://www.linkedin.com/in/jakeaustin4701/">Jake Austin</a>,
-            <a href="https://zhengqili.github.io/">Zhengqi Li</a>,
-            <a href="https://people.eecs.berkeley.edu/~kanazawa/">Angjoo Kanazawa</a>
-            <br>
-            <span style="display: none;">&nbsp;</span>
-            <em>arXiv</em>, 2024
-            <br>
-            <a href="https://shape-of-motion.github.io/">project page</a>
-            /
-            <a href="https://arxiv.org/abs/2407.13764">arXiv</a>
-            /
-            <a href="https://github.com/vye16/shape-of-motion/">code</a>
-            <p></p>
-          </td>
-        </tr>
+                <tr onmouseout="som_stop()" onmouseover="som_start()">
+                  <td style="padding:20px;width:25%;vertical-align:middle">
+                    <div class="one">
+                      <div class="two" id='som_image_all'>
+                        <video width="100%" height="100%" muted autoplay loop>
+                          <source src="images/som.mp4" type="video/mp4">
+                        </video>
+                      </div>
+                      <img src='images/som.jpg' id='som_before'  width="160">
+                    </div>
+                    <script type="text/javascript">
+                      function som_start() {
+                        document.getElementById('som_image_all').style.opacity = "1";
+                      }
+                      function som_stop() {
+                        document.getElementById('som_image_all').style.opacity = "0";
+                      }
+                      som_stop()
+                    </script>
+                  </td>
 
-        <tr onmouseout="spatialtracker_stop()" onmouseover="spatialtracker_start()">
-          <td style="padding:20px;width:25%;vertical-align:middle">
-            <div class="one">
-              <div class="two" id='spatialtracker_image'><video  width=100% height=100% muted autoplay loop>
-              <source src="images/spatial_tracker.mp4" type="video/mp4">
-              </video></div>
-              <img src='images/spatial_tracker.jpg' id='spatialtracker_before' width=160 >
-            </div>
-            <script type="text/javascript">
-              function spatialtracker_start() {
-                document.getElementById('spatialtracker_image').style.opacity = "1";
-              }
+                  <td style="padding:20px;width:75%;vertical-align:middle">
+                    <a href="https://shape-of-motion.github.io/">
+                      <papertitle> Shape of Motion: 4D Reconstruction from a Single Video </papertitle>
+                    </a>
+                    <br>
+                    <strong>Qianqian Wang</strong>*,
+                    <a href="https://people.eecs.berkeley.edu/~vye/">Vickie Ye*</a>,
+                    <a href="https://hangg7.com/">Hang Gao*</a>,
+                    <a href="https://www.linkedin.com/in/jakeaustin4701/">Jake Austin</a>,
+                    <a href="https://zhengqili.github.io/">Zhengqi Li</a>,
+                    <a href="https://people.eecs.berkeley.edu/~kanazawa/">Angjoo Kanazawa</a>
+                    <br>
+                    <em>arXiv</em>, 2024
+                    <br>
+                    <a href="https://shape-of-motion.github.io/">project page</a>
+                    /
+                    <a href="https://arxiv.org/abs/2407.13764">arXiv</a>
+                    /
+                    <a href="https://github.com/vye16/shape-of-motion/">code</a>
+                    <p></p>
+                  </td>
+                </tr> 
 
-              function spatialtracker_stop() {
-                document.getElementById('spatialtracker_image').style.opacity = "0";
-              }
-              spatialtracker_stop()
-            </script>
-          </td>
+                <tr onmouseout="spatialtracker_stop()" onmouseover="spatialtracker_start()">
+                  <td style="padding:20px;width:25%;vertical-align:middle">
+                    <div class="one">
+                      <div class="two" id='spatialtracker_image'>
+                        <video  width="100%" height="100%" muted autoplay loop>
+                          <source src="images/spatial_tracker.mp4" type="video/mp4">
+                        </video>
+                      </div>
+                      <img src='images/spatial_tracker.jpg' id='spatialtracker_before' width="160" >
+                    </div>
+                    <script type="text/javascript">
+                      function spatialtracker_start() {
+                        document.getElementById('spatialtracker_image').style.opacity = "1";
+                      }
+                      function spatialtracker_stop() {
+                        document.getElementById('spatialtracker_image').style.opacity = "0";
+                      }
+                      spatialtracker_stop()
+                    </script>
+                  </td>
 
-          <td style="padding:20px;width:75%;vertical-align:middle">
-            <a href="https://henry123-boy.github.io/SpaTracker/">
-              <papertitle> SpatialTracker: Tracking Any 2D Pixels in 3D Space </papertitle>
-            </a>
-            <br>
-            <a href="https://henry123-boy.github.io/">Yuxi Xiao</a>*,
-            <strong>Qianqian Wang</strong>*,
-            <a href="https://zhanghe3z.github.io/">Shangzhan Zhang</a>,
-            <a href="https://xuenan.net/">Nan Xue</a>,
-            <a href="https://pengsida.net/">Sida Peng</a>,
-            <a href="https://shenyujun.github.io/">Yujun Shen</a><sup>†</sup>,
-            <a href="https://xzhou.me/">Xiaowei Zhou</a><sup>†</sup>
-            <br>
-            <span style="display: none;">&nbsp;</span>
-            <em>CVPR</em>, 2024 (<strong>highlight</strong>)
-            <br>
-            <a href="https://henry123-boy.github.io/SpaTracker/">project page</a>
-            /
-            <a href="https://henry123-boy.github.io/SpaTracker/SpatialTracker_files/pdf/spatracker.pdf">arXiv</a>
-            /
-            <a href="https://henry123-boy.github.io/SpaTracker/">code</a>
-            <p></p>
-          </td>
-        </tr>
+                  <td style="padding:20px;width:75%;vertical-align:middle">
+                    <a href="https://henry123-boy.github.io/SpaTracker/">
+                      <papertitle> SpatialTracker: Tracking Any 2D Pixels in 3D Space </papertitle>
+                    </a>
+                    <br>
+                    <a href="https://henry123-boy.github.io/">Yuxi Xiao</a>*,
+                    <strong>Qianqian Wang</strong>*,
+                    <a href="https://zhanghe3z.github.io/">Shangzhan Zhang</a>,
+                    <a href="https://xuenan.net/">Nan Xue</a>,
+                    <a href="https://pengsida.net/">Sida Peng</a>,
+                    <a href="https://shenyujun.github.io/">Yujun Shen</a><sup>†</sup>,
+                    <a href="https://xzhou.me/">Xiaowei Zhou</a><sup>†</sup>
+                    <br>
+                    <em>CVPR</em>, 2024 (<strong>highlight</strong>)
+                    <br>
+                    <a href="https://henry123-boy.github.io/SpaTracker/">project page</a>
+                    /
+                    <a href="https://henry123-boy.github.io/SpaTracker/SpatialTracker_files/pdf/spatracker.pdf">arXiv</a>
+                    /
+                    <a href="https://github.com/henry123-boy/SpaTracker">code</a>
+                    <p></p>
+                  </td>
+                </tr>
 
-        <tr onmouseout="dift_stop()" onmouseover="dift_start()">
-            <td style="padding:20px;width:25%;vertical-align:middle">
-              <div class="one">
-                <div class="two" id='dift_image'><video  width=100% height=100% muted autoplay loop>
-                <source src="images/dift.mp4" type="video/mp4">
-                </video></div>
-                <img src='images/dift.png' id='dift_before' width=160 >
-              </div>
-              <script type="text/javascript">
-                function dift_start() {
-                  document.getElementById('dift_image').style.opacity = "1";
-                }
+                <tr onmouseout="dift_stop()" onmouseover="dift_start()">
+                  <td style="padding:20px;width:25%;vertical-align:middle">
+                    <div class="one">
+                      <div class="two" id='dift_image'>
+                        <video  width="100%" height="100%" muted autoplay loop>
+                          <source src="images/dift.mp4" type="video/mp4">
+                        </video>
+                      </div>
+                      <img src='images/dift.png' id='dift_before' width="160">
+                    </div>
+                    <script type="text/javascript">
+                      function dift_start() {
+                        document.getElementById('dift_image').style.opacity = "1";
+                      }
+                      function dift_stop() {
+                        document.getElementById('dift_image').style.opacity = "0";
+                      }
+                      dift_stop()
+                    </script>
+                  </td>
+                  <td style="padding:20px;width:75%;vertical-align:middle">
+                    <a href="https://diffusionfeatures.github.io/">
+                      <papertitle>Emergent Correspondence from Image Diffusion</papertitle>
+                    </a>
+                    <br>
+                    <a href="https://lumingtang.info/">Luming Tang*</a>,
+                    <a href="https://kmnp.github.io/">Menglin Jia*</a>,
+                    <strong>Qianqian Wang*</strong>,
+                    <a href="https://www.cs.cornell.edu/~cpphoo/">Cheng Perng Phoo</a>,
+                    <a href="http://home.bharathh.info/">Bharath Hariharan</a>
+                    <br>
+                    <em>NeurIPS</em>, 2023
+                    <br>
+                    <a href="https://diffusionfeatures.github.io/">project page</a> /
+                    <a href="https://arxiv.org/abs/2306.03881/">arXiv</a> /
+                    <a href="https://github.com/Tsingularity/dift">code</a>
+                    <p></p>
+                  </td>
+                </tr>
 
-                function dift_stop() {
-                  document.getElementById('dift_image').style.opacity = "0";
-                }
-                dift_stop()
-              </script>
-            </td>
+                <tr onmouseout="omnimotion_stop()" onmouseover="omnimotion_start()">
+                  <td style="padding:20px;width:25%;vertical-align:middle">
+                    <div class="one">
+                      <div class="two" id='omnimotion_image'>
+                        <video  width="100%" height="100%" muted autoplay loop>
+                          <source src="images/omnimotion.mp4" type="video/mp4">
+                        </video>
+                      </div>
+                      <img src='images/omnimotion.jpg' id='omnimotion_before' width="160">
+                    </div>
+                    <script type="text/javascript">
+                      function omnimotion_start() {
+                        document.getElementById('omnimotion_image').style.opacity = "1";
+                      }
+                      function omnimotion_stop() {
+                        document.getElementById('omnimotion_image').style.opacity = "0";
+                      }
+                      omnimotion_stop()
+                    </script>
+                  </td>
+                  <td style="padding:20px;width:75%;vertical-align:middle">
+                    <a href="https://omnimotion.github.io/">
+                      <papertitle>Tracking Everything Everywhere All at Once</papertitle>
+                    </a>
+                    <br>
+                    <strong>Qianqian Wang</strong>,
+                    <a href="https://yuyuchang.github.io/">Yen-Yu Chang</a>,
+                    <a href="https://www.cs.cornell.edu/~ruojin/">Ruojin Cai</a>,
+                    <a href="https://zhengqili.github.io/">Zhengqi Li</a>, 
+                    <a href="http://home.bharathh.info/">Bharath Hariharan</a>,
+                    <a href="https://holynski.org/">Aleksander Holynski</a>,
+                    <a href="https://www.cs.cornell.edu/~snavely/">Noah Snavely</a>
+                    <br>
+                    <em>ICCV</em>, 2023 <strong>(Best Student Paper Award)</strong>
+                    <br>
+                    <a href="https://omnimotion.github.io/">project page</a> /
+                    <a href="https://arxiv.org/abs/2306.05422/">arXiv</a> /
+                    <a href="https://github.com/qianqianwang68/omnimotion">code</a>
+                    <p></p>
+                  </td>
+                </tr>
 
-            <td style="padding:20px;width:75%;vertical-align:middle">
-              <a href="https://diffusionfeatures.github.io/">
-                <papertitle>Emergent Correspondence from Image Diffusion</papertitle>
-              </a>
-              <br>
-              <a href="https://lumingtang.info/">Luming Tang*</a>,
-              <a href="https://kmnp.github.io/">Menglin Jia*</a>,
-              <strong>Qianqian Wang*</strong>,
-              <a href="https://www.cs.cornell.edu/~cpphoo/">Cheng Perng Phoo</a>,
-              <a href="http://home.bharathh.info/">Bharath Hariharan</a>
-              <br>
-              <em>NeurIPS</em>, 2023
-              <br>
+                <tr onmouseout="dynibar_stop()" onmouseover="dynibar_start()">
+                  <td style="padding:20px;width:25%;vertical-align:middle">
+                    <div class="one">
+                      <div class="two" id='dynibar_image'>
+                        <video  width="100%" height="100%" muted autoplay loop>
+                          <source src="images/dynibar.mp4" type="video/mp4">
+                        </video>
+                      </div>
+                      <img src='images/dynibar.jpg' id='dynibar_before' width="160">
+                    </div>
+                    <script type="text/javascript">
+                      function dynibar_start() {
+                        document.getElementById('dynibar_image').style.opacity = "1";
+                      }
+                      function dynibar_stop() {
+                        document.getElementById('dynibar_image').style.opacity = "0";
+                      }
+                      dynibar_stop()
+                    </script>
+                  </td>
+                  <td style="padding:20px;width:75%;vertical-align:middle">
+                    <a href="https://dynibar.github.io/">
+                      <papertitle>DynIBaR: Neural Dynamic Image-Based Rendering</papertitle>
+                    </a>
+                    <br>
+                    <a href="https://zhengqili.github.io/">Zhengqi Li</a>, 
+                    <strong>Qianqian Wang</strong>,
+                    <a href="https://people.csail.mit.edu/fcole/">Forrester Cole</a>,
+                    <a href="https://research.google/people/RichardTucker/">Richard Tucker</a>,
+                    <a href="https://www.cs.cornell.edu/~snavely/">Noah Snavely</a>
+                    <br>
+                    <em>CVPR</em>, 2023 <strong>(Best Paper Honorable Mention)</strong>
+                    <br>
+                    <a href="https://dynibar.github.io/">project page</a> /
+                    <a href="https://arxiv.org/abs/2211.11082/">arXiv</a> /
+                    <a href="https://github.com/google/dynibar">code</a>
+                    <p></p>
+                  </td>
+                </tr>
 
-              <a href="https://diffusionfeatures.github.io/">project page</a> / 
-              <a href="https://arxiv.org/abs/2306.03881/">arXiv</a> / 
-              <a href="https://github.com/Tsingularity/dift">code</a>      
-              <p></p>
-            </td>
-          </tr>
+                <tr onmouseout="three_d_moments_stop()" onmouseover="three_d_moments_start()">
+                  <td style="padding:20px;width:25%;vertical-align:middle">
+                    <div class="one">
+                      <div class="two" id='3d_moments_image'>
+                        <video  width="100%" height="100%" muted autoplay loop>
+                          <source src="images/3d_moments.mp4" type="video/mp4">
+                        </video>
+                        </div>
+                        <img src='images/3d_moments.png' id='3d_moments_before' width="160" >
+                      </div>
+                    <script type="text/javascript">
+                      function three_d_moments_start() {
+                        document.getElementById('3d_moments_image').style.opacity = "1";
+                        document.getElementById('3d_moments_before').style.opacity = "0";
+                      }
+                      function three_d_moments_stop() {
+                        document.getElementById('3d_moments_image').style.opacity = "0";
+                        document.getElementById('3d_moments_before').style.opacity = "1";
+                      }
+                      three_d_moments_stop()
+                    </script>
+                  </td>
+                  <td style="padding:20px;width:75%;vertical-align:middle">
+                    <a href="https://3d-moments.github.io/">
+                      <papertitle>3D Moments from Near-Duplicate Photos</papertitle>
+                    </a>
+                    <br>
+                    <strong>Qianqian Wang</strong>,
+                    <a href="https://zhengqili.github.io/">Zhengqi Li</a>, 
+                    <a href="http://salesin.cs.washington.edu/">David Salesin</a>, 
+                    <a href="https://www.cs.cornell.edu/~snavely/">Noah Snavely</a>,
+                    <a href="https://homes.cs.washington.edu/~curless/">Brian Curless</a>,
+                    <a href="https://www.linkedin.com/in/jannekontkanen/">Janne Kontkanen</a>
+                    <br>
+                    <em>CVPR</em>, 2022  
+                    <br>
+                    <a href="https://3d-moments.github.io/">project page</a> /
+                    <a href="https://arxiv.org/abs/2205.06255">arXiv</a> /
+                    <a href="https://github.com/google-research/3d-moments">code</a> 
+                    <p></p>
+                  </td>
+                </tr>
 
-        <tr onmouseout="omnimotion_stop()" onmouseover="omnimotion_start()">
-            <td style="padding:20px;width:25%;vertical-align:middle">
-              <div class="one">
-                <div class="two" id='omnimotion_image'><video  width=100% height=100% muted autoplay loop>
-                <source src="images/omnimotion.mp4" type="video/mp4">
-                </video></div>
-                <img src='images/omnimotion.jpg' id='omnimotion_before' width=160 >
-              </div>
-              <script type="text/javascript">
-                function omnimotion_start() {
-                  document.getElementById('omnimotion_image').style.opacity = "1";
-                }
+                <tr onmouseout="ibrnet_stop()" onmouseover="ibrnet_start()">
+                  <td style="padding:20px;width:25%;vertical-align:middle">
+                    <div class="one">
+                      <div class="two" id='ibrnet_image'>
+                        <video  width="100%" height="100%" muted autoplay loop>
+                          <source src="images/ibrnet_after.mp4" type="video/mp4">
+                          Your browser does not support the video tag.
+                        </video>
+                      </div>
+                      <img src='images/ibrnet_before.jpg' width="160">
+                    </div>
+                    <script type="text/javascript">
+                      function ibrnet_start() {
+                        document.getElementById('ibrnet_image').style.opacity = "1";
+                      }
+                      function ibrnet_stop() {
+                        document.getElementById('ibrnet_image').style.opacity = "0";
+                      }
+                      ibrnet_stop()
+                    </script>
+                  </td>
+                  <td style="padding:20px;width:75%;vertical-align:middle">
+                    <a href="https://ibrnet.github.io/">
+                      <papertitle>IBRNet: Learning Multi-View Image-Based Rendering</papertitle>
+                    </a>
+                    <br>
+                    <strong>Qianqian Wang</strong>,
+                    <a href="https://scholar.google.com/citations?hl=zh-CN&user=2ccN2csAAAAJ">Zhicheng Wang</a>,
+                    <a href="https://www.kylegenova.com/">Kyle Genova</a>,
+                    <a href="https://pratulsrinivasan.github.io/">Pratul Srinivasan</a>,
+                    <a href="https://scholar.google.com/citations?user=Rh9T3EcAAAAJ&hl=en">Howard Zhou</a>, <br>
+                    <a href="https://jonbarron.info/">Jon Barron</a>,
+                    <a href="http://www.ricardomartinbrualla.com/">Ricardo Martin-Brualla</a>,
+                    <a href="https://www.cs.cornell.edu/~snavely/">Noah Snavely</a>, 
+                    <a href="https://www.cs.princeton.edu/~funk/">Thomas Funkhouser</a>
+                    <br>
+                    <em>CVPR</em>, 2021
+                    <br>
+                    <a href="https://ibrnet.github.io/">project page</a> /
+                    <a href="https://arxiv.org/abs/2102.13090">arXiv</a> /
+                    <a href="https://github.com/googleinterns/IBRNet">code</a>
+                  </td>
+                </tr>
 
-                function omnimotion_stop() {
-                  document.getElementById('omnimotion_image').style.opacity = "0";
-                }
-                omnimotion_stop()
-              </script>
-            </td>
+                <tr>
+                  <td style="padding:20px;width:25%;vertical-align:middle">
+                    <div class="one">
+                      <img src='images/caps.png' width="160">
+                    </div>
+                  </td>
+                  <td style="padding:20px;width:75%;vertical-align:middle">
+                    <a href="https://qianqianwang68.github.io/CAPS/">
+                      <papertitle>Learning Feature Descriptors using Camera Pose Supervision</papertitle>
+                    </a>
+                    <br>
+                    <strong>Qianqian Wang</strong>,
+                    <a href="https://xzhou.me/">Xiaowei Zhou</a>,
+                    <a href="http://home.bharathh.info/">Bharath Hariharan</a>,
+                    <a href="https://www.cs.cornell.edu/~snavely/">Noah Snavely</a>
+                    <br>
+                    <em>ECCV</em>, 2020 &nbsp <strong>(Oral)</strong>
+                    <br>
+                    <a href="https://qianqianwang68.github.io/CAPS/">project page</a>
+                    /
+                    <a href="https://arxiv.org/abs/2004.13324">arXiv</a>
+                    /
+                    <a href="https://github.com/qianqianwang68/caps">code</a>
+                    <p></p>
+                  </td>
+                </tr>
 
-            <td style="padding:20px;width:75%;vertical-align:middle">
-              <a href="https://omnimotion.github.io/">
-                <papertitle>Tracking Everything Everywhere All at Once</papertitle>
-              </a>
-              <br>
-              <strong>Qianqian Wang</strong>,
-              <a href="https://yuyuchang.github.io/">Yen-Yu Chang</a>,
-              <a href="https://www.cs.cornell.edu/~ruojin/">Ruojin Cai</a>,
-              <a href="https://zhengqili.github.io/">Zhengqi Li</a>, 
-              <a href="http://home.bharathh.info/">Bharath Hariharan</a>,
-              <a href="https://holynski.org/">Aleksander Holynski</a>,
-              <a href="https://www.cs.cornell.edu/~snavely/">Noah Snavely</a>
-              <br>
-              <em>ICCV</em>, 2023 <strong>(Best Student Paper Award)</strong>
-              <br>
+                <tr>
+                  <td style="padding:20px;width:25%;vertical-align:middle">
+                    <div class="one">
+                      <img src='images/multi_image_matching.png' width="160">
+                    </div>
+                  </td>
+                  <td style="padding:20px;width:75%;vertical-align:middle">
+                    <a href="https://arxiv.org/abs/1711.07641">
+                      <papertitle>Multi-Image Semantic Matching by Mining Consistent Features</papertitle>
+                    </a>
+                    <br>
+                    <strong>Qianqian Wang</strong>,
+                    <a href="https://xzhou.me/">Xiaowei Zhou</a>,
+                    <a href="https://www.cis.upenn.edu/~kostas/">Kostas Daniilidis</a>
+                    <br>
+                    <em>CVPR</em>, 2018
+                    <br>
+                    <a href="https://arxiv.org/abs/1711.07641">arXiv</a>
+                    /
+                    <a href="https://github.com/zju-3dv/multiway">code</a>
+                    <p></p>
+                  </td>
+                </tr>
+ 
+              </tbody>
+            </table>
+          </div>
+          
+          <!-- Hidden container: all publications (show all by date) -->
+          <div id="pubs_by_date" style="display:none;">
+            <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+              <tbody>
+                <!-- (Below is exactly the same big table of all pubs.) -->
+                
+                <tr onmouseout="som_stop()" onmouseover="som_start()">
+                  <td style="padding:20px;width:25%;vertical-align:middle">
+                    <div class="one">
+                      <div class="two" id='som_image_all'>
+                        <video width="100%" height="100%" muted autoplay loop>
+                          <source src="images/som.mp4" type="video/mp4">
+                        </video>
+                      </div>
+                      <img src='images/som.jpg' width="160">
+                    </div>
+                    <script type="text/javascript">
+                      function som_start() {
+                        document.getElementById('som_image_all').style.opacity = "1";
+                      }
+                      function som_stop() {
+                        document.getElementById('som_image_all').style.opacity = "0";
+                      }
+                      som_stop()
+                    </script>
+                  </td>
 
-              <a href="https://omnimotion.github.io/">project page</a> / 
-              <a href="https://arxiv.org/abs/2306.05422/">arXiv</a> / 
-              <a href="https://github.com/qianqianwang68/omnimotion">code</a>      
-              <p></p>
-            </td>
-          </tr>
+                  <td style="padding:20px;width:75%;vertical-align:middle">
+                    <a href="https://shape-of-motion.github.io/">
+                      <papertitle> Shape of Motion: 4D Reconstruction from a Single Video </papertitle>
+                    </a>
+                    <br>
+                    <strong>Qianqian Wang</strong>*,
+                    <a href="https://people.eecs.berkeley.edu/~vye/">Vickie Ye*</a>,
+                    <a href="https://hangg7.com/">Hang Gao*</a>,
+                    <a href="https://www.linkedin.com/in/jakeaustin4701/">Jake Austin</a>,
+                    <a href="https://zhengqili.github.io/">Zhengqi Li</a>,
+                    <a href="https://people.eecs.berkeley.edu/~kanazawa/">Angjoo Kanazawa</a>
+                    <br>
+                    <em>arXiv</em>, 2024
+                    <br>
+                    <a href="https://shape-of-motion.github.io/">project page</a>
+                    /
+                    <a href="https://arxiv.org/abs/2407.13764">arXiv</a>
+                    /
+                    <a href="https://github.com/vye16/shape-of-motion/">code</a>
+                    <p></p>
+                  </td>
+                </tr>
 
+                <tr onmouseout="spatialtracker_stop_all()" onmouseover="spatialtracker_start_all()">
+                  <td style="padding:20px;width:25%;vertical-align:middle">
+                    <div class="one">
+                      <div class="two" id='spatialtracker_image_all'>
+                        <video  width="100%" height="100%" muted autoplay loop>
+                          <source src="images/spatial_tracker.mp4" type="video/mp4">
+                        </video>
+                      </div>
+                      <img src='images/spatial_tracker.jpg' width="160">
+                    </div>
+                    <script type="text/javascript">
+                      function spatialtracker_start_all() {
+                        document.getElementById('spatialtracker_image_all').style.opacity = "1";
+                      }
+                      function spatialtracker_stop_all() {
+                        document.getElementById('spatialtracker_image_all').style.opacity = "0";
+                      }
+                      spatialtracker_stop_all()
+                    </script>
+                  </td>
 
-        <tr onmouseout="doppelgangers_stop()" onmouseover="doppelgangers_start()">
-            <td style="padding:20px;width:25%;vertical-align:middle">
-              <div class="one">
-                <div class="two" id='doppelgangers_image'><video  width=100% height=100% muted autoplay loop>
-                <source src="images/doppelgangers.mp4" type="video/mp4">
-                </video></div>
-                <img src='images/doppelgangers.jpg' id='doppelgangers_before' width=160 >
-              </div>
-              <script type="text/javascript">
-                function doppelgangers_start() {
-                  document.getElementById('doppelgangers_image').style.opacity = "1";
-                }
+                  <td style="padding:20px;width:75%;vertical-align:middle">
+                    <a href="https://henry123-boy.github.io/SpaTracker/">
+                      <papertitle> SpatialTracker: Tracking Any 2D Pixels in 3D Space </papertitle>
+                    </a>
+                    <br>
+                    <a href="https://henry123-boy.github.io/">Yuxi Xiao</a>*,
+                    <strong>Qianqian Wang</strong>*,
+                    <a href="https://zhanghe3z.github.io/">Shangzhan Zhang</a>,
+                    <a href="https://xuenan.net/">Nan Xue</a>,
+                    <a href="https://pengsida.net/">Sida Peng</a>,
+                    <a href="https://shenyujun.github.io/">Yujun Shen</a><sup>†</sup>,
+                    <a href="https://xzhou.me/">Xiaowei Zhou</a><sup>†</sup>
+                    <br>
+                    <em>CVPR</em>, 2024 (<strong>highlight</strong>)
+                    <br>
+                    <a href="https://henry123-boy.github.io/SpaTracker/">project page</a>
+                    /
+                    <a href="https://henry123-boy.github.io/SpaTracker/SpatialTracker_files/pdf/spatracker.pdf">arXiv</a>
+                    /
+                    <a href="https://henry123-boy.github.io/SpaTracker/">code</a>
+                    <p></p>
+                  </td>
+                </tr>
 
-                function doppelgangers_stop() {
-                  document.getElementById('doppelgangers_image').style.opacity = "0";
-                }
-                doppelgangers_stop()
-              </script>
-            </td>
+                <tr onmouseout="dift_stop()" onmouseover="dift_start()">
+                  <td style="padding:20px;width:25%;vertical-align:middle">
+                    <div class="one">
+                      <div class="two" id='dift_image'>
+                        <video  width="100%" height="100%" muted autoplay loop>
+                          <source src="images/dift.mp4" type="video/mp4">
+                        </video>
+                      </div>
+                      <img src='images/dift.png' id='dift_before' width="160">
+                    </div>
+                    <script type="text/javascript">
+                      function dift_start() {
+                        document.getElementById('dift_image').style.opacity = "1";
+                      }
+                      function dift_stop() {
+                        document.getElementById('dift_image').style.opacity = "0";
+                      }
+                      dift_stop()
+                    </script>
+                  </td>
+                  <td style="padding:20px;width:75%;vertical-align:middle">
+                    <a href="https://diffusionfeatures.github.io/">
+                      <papertitle>Emergent Correspondence from Image Diffusion</papertitle>
+                    </a>
+                    <br>
+                    <a href="https://lumingtang.info/">Luming Tang*</a>,
+                    <a href="https://kmnp.github.io/">Menglin Jia*</a>,
+                    <strong>Qianqian Wang*</strong>,
+                    <a href="https://www.cs.cornell.edu/~cpphoo/">Cheng Perng Phoo</a>,
+                    <a href="http://home.bharathh.info/">Bharath Hariharan</a>
+                    <br>
+                    <em>NeurIPS</em>, 2023
+                    <br>
+                    <a href="https://diffusionfeatures.github.io/">project page</a> /
+                    <a href="https://arxiv.org/abs/2306.03881/">arXiv</a> /
+                    <a href="https://github.com/Tsingularity/dift">code</a>
+                    <p></p>
+                  </td>
+                </tr>
 
-            <td style="padding:20px;width:75%;vertical-align:middle">
-              <a href="https://doppelgangers-3d.github.io/">
-                <papertitle>Doppelgangers: Learning to Disambiguate Images of Similar Structures</papertitle>
-              </a>
-              <br>
-              <a href="https://www.cs.cornell.edu/~ruojin/">Ruojin Cai</a>,
-              <a href="https://www.linkedin.com/in/josephtung-">Joseph Tung</a>,
-              <strong>Qianqian Wang</strong>,
-              <a href="https://www.elor.sites.tau.ac.il/">Hadar Averbuch-Elor</a>,
-              <a href="http://home.bharathh.info/">Bharath Hariharan</a>,
-              <a href="https://www.cs.cornell.edu/~snavely/">Noah Snavely</a>
-              <br>
-              <em>ICCV</em>, 2023 <strong>(Oral)</strong>
-              <br>
+                <tr onmouseout="omnimotion_stop()" onmouseover="omnimotion_start()">
+                  <td style="padding:20px;width:25%;vertical-align:middle">
+                    <div class="one">
+                      <div class="two" id='omnimotion_image'>
+                        <video  width="100%" height="100%" muted autoplay loop>
+                          <source src="images/omnimotion.mp4" type="video/mp4">
+                        </video>
+                      </div>
+                      <img src='images/omnimotion.jpg' id='omnimotion_before' width="160">
+                    </div>
+                    <script type="text/javascript">
+                      function omnimotion_start() {
+                        document.getElementById('omnimotion_image').style.opacity = "1";
+                      }
+                      function omnimotion_stop() {
+                        document.getElementById('omnimotion_image').style.opacity = "0";
+                      }
+                      omnimotion_stop()
+                    </script>
+                  </td>
+                  <td style="padding:20px;width:75%;vertical-align:middle">
+                    <a href="https://omnimotion.github.io/">
+                      <papertitle>Tracking Everything Everywhere All at Once</papertitle>
+                    </a>
+                    <br>
+                    <strong>Qianqian Wang</strong>,
+                    <a href="https://yuyuchang.github.io/">Yen-Yu Chang</a>,
+                    <a href="https://www.cs.cornell.edu/~ruojin/">Ruojin Cai</a>,
+                    <a href="https://zhengqili.github.io/">Zhengqi Li</a>, 
+                    <a href="http://home.bharathh.info/">Bharath Hariharan</a>,
+                    <a href="https://holynski.org/">Aleksander Holynski</a>,
+                    <a href="https://www.cs.cornell.edu/~snavely/">Noah Snavely</a>
+                    <br>
+                    <em>ICCV</em>, 2023 <strong>(Best Student Paper Award)</strong>
+                    <br>
+                    <a href="https://omnimotion.github.io/">project page</a> /
+                    <a href="https://arxiv.org/abs/2306.05422/">arXiv</a> /
+                    <a href="https://github.com/qianqianwang68/omnimotion">code</a>
+                    <p></p>
+                  </td>
+                </tr>
 
-              <a href="https://doppelgangers-3d.github.io/">project page</a> / 
-              <a href="https://arxiv.org/abs/2309.02420">arXiv</a> / 
-              <a href="https://github.com/RuojinCai/Doppelgangers">code</a> /
-              <a href="https://github.com/RuojinCai/doppelgangers/blob/main/data/doppelgangers_dataset/README.md">data</a>
-              <p></p>
-            </td>
-          </tr>
+                <tr onmouseout="doppelgangers_stop()" onmouseover="doppelgangers_start()">
+                  <td style="padding:20px;width:25%;vertical-align:middle">
+                    <div class="one">
+                      <div class="two" id='doppelgangers_image'>
+                        <video  width="100%" height="100%" muted autoplay loop>
+                          <source src="images/doppelgangers.mp4" type="video/mp4">
+                        </video>
+                      </div>
+                      <img src='images/doppelgangers.jpg' id='doppelgangers_before' width="160">
+                    </div>
+                    <script type="text/javascript">
+                      function doppelgangers_start() {
+                        document.getElementById('doppelgangers_image').style.opacity = "1";
+                      }
+                      function doppelgangers_stop() {
+                        document.getElementById('doppelgangers_image').style.opacity = "0";
+                      }
+                      doppelgangers_stop()
+                    </script>
+                  </td>
+                  <td style="padding:20px;width:75%;vertical-align:middle">
+                    <a href="https://doppelgangers-3d.github.io/">
+                      <papertitle>Doppelgangers: Learning to Disambiguate Images of Similar Structures</papertitle>
+                    </a>
+                    <br>
+                    <a href="https://www.cs.cornell.edu/~ruojin/">Ruojin Cai</a>,
+                    <a href="https://www.linkedin.com/in/josephtung-">Joseph Tung</a>,
+                    <strong>Qianqian Wang</strong>,
+                    <a href="https://www.elor.sites.tau.ac.il/">Hadar Averbuch-Elor</a>,
+                    <a href="http://home.bharathh.info/">Bharath Hariharan</a>,
+                    <a href="https://www.cs.cornell.edu/~snavely/">Noah Snavely</a>
+                    <br>
+                    <em>ICCV</em>, 2023 <strong>(Oral)</strong>
+                    <br>
+                    <a href="https://doppelgangers-3d.github.io/">project page</a> /
+                    <a href="https://arxiv.org/abs/2309.02420">arXiv</a> /
+                    <a href="https://github.com/RuojinCai/Doppelgangers">code</a> /
+                    <a href="https://github.com/RuojinCai/doppelgangers/blob/main/data/doppelgangers_dataset/README.md">data</a>
+                    <p></p>
+                  </td>
+                </tr>
 
-        <tr onmouseout="dynibar_stop()" onmouseover="dynibar_start()">
-            <td style="padding:20px;width:25%;vertical-align:middle">
-              <div class="one">
-                <div class="two" id='dynibar_image'><video  width=100% height=100% muted autoplay loop>
-                <source src="images/dynibar.mp4" type="video/mp4">
-                </video></div>
-                <img src='images/dynibar.jpg' id='dynibar_before' width=160 >
-              </div>
-              <script type="text/javascript">
-                function dynibar_start() {
-                  document.getElementById('dynibar_image').style.opacity = "1";
-                }
+                <tr onmouseout="dynibar_stop()" onmouseover="dynibar_start()">
+                  <td style="padding:20px;width:25%;vertical-align:middle">
+                    <div class="one">
+                      <div class="two" id='dynibar_image'>
+                        <video  width="100%" height="100%" muted autoplay loop>
+                          <source src="images/dynibar.mp4" type="video/mp4">
+                        </video>
+                      </div>
+                      <img src='images/dynibar.jpg' id='dynibar_before' width="160">
+                    </div>
+                    <script type="text/javascript">
+                      function dynibar_start() {
+                        document.getElementById('dynibar_image').style.opacity = "1";
+                      }
+                      function dynibar_stop() {
+                        document.getElementById('dynibar_image').style.opacity = "0";
+                      }
+                      dynibar_stop()
+                    </script>
+                  </td>
+                  <td style="padding:20px;width:75%;vertical-align:middle">
+                    <a href="https://dynibar.github.io/">
+                      <papertitle>DynIBaR: Neural Dynamic Image-Based Rendering</papertitle>
+                    </a>
+                    <br>
+                    <a href="https://zhengqili.github.io/">Zhengqi Li</a>, 
+                    <strong>Qianqian Wang</strong>,
+                    <a href="https://people.csail.mit.edu/fcole/">Forrester Cole</a>,
+                    <a href="https://research.google/people/RichardTucker/">Richard Tucker</a>,
+                    <a href="https://www.cs.cornell.edu/~snavely/">Noah Snavely</a>
+                    <br>
+                    <em>CVPR</em>, 2023 <strong>(Best Paper Honorable Mention)</strong>
+                    <br>
+                    <a href="https://dynibar.github.io/">project page</a> /
+                    <a href="https://arxiv.org/abs/2211.11082/">arXiv</a> /
+                    <a href="https://github.com/google/dynibar">code</a>
+                    <p></p>
+                  </td>
+                </tr>
 
-                function dynibar_stop() {
-                  document.getElementById('dynibar_image').style.opacity = "0";
-                }
-                dynibar_stop()
-              </script>
-            </td>
+                <tr onmouseout="chronology_stop()" onmouseover="chronology_start()">
+                  <td style="padding:20px;width:25%;vertical-align:middle">
+                    <div class="one">
+                      <div class="two" id='chronology_image'>
+                        <video  width="100%" height="100%" muted autoplay loop>
+                          <source src="images/chronology.mp4" type="video/mp4">
+                        </video>
+                      </div>
+                      <img src='images/chronology.jpg' id='chronology_before' width="160">
+                    </div>
+                    <script type="text/javascript">
+                      function chronology_start() {
+                        document.getElementById('chronology_image').style.opacity = "1";
+                      }
+                      function chronology_stop() {
+                        document.getElementById('chronology_image').style.opacity = "0";
+                      }
+                      chronology_stop()
+                    </script>
+                  </td>
+                  <td style="padding:20px;width:75%;vertical-align:middle">
+                    <a href="https://zju3dv.github.io/neusc/">
+                      <papertitle>Neural Scene Chronology</papertitle>
+                    </a>
+                    <br>
+                    <a href="https://haotongl.github.io/">Haotong Lin</a>, 
+                    <strong>Qianqian Wang</strong>,
+                    <a href="https://www.cs.cornell.edu/~ruojin/">Ruojin Cai</a>,
+                    <a href="https://pengsida.net/">Sida Peng</a>,
+                    <a href="https://www.elor.sites.tau.ac.il/">Hadar Averbuch-Elor</a>,
+                    <a href="https://xzhou.me/">Xiaowei Zhou</a>,
+                    <a href="https://www.cs.cornell.edu/~snavely/">Noah Snavely</a>
+                    <br>
+                    <em>CVPR</em>, 2023
+                    <br>
+                    <a href="https://zju3dv.github.io/neusc/">project page</a> /
+                    <a href="https://arxiv.org/abs/2306.07970">arXiv</a> /
+                    <a href="https://github.com/zju3dv/NeuSC">code</a>
+                    <p></p>
+                  </td>
+                </tr>
 
-            <td style="padding:20px;width:75%;vertical-align:middle">
-              <a href="https://dynibar.github.io/">
-                <papertitle>DynIBaR: Neural Dynamic Image-Based Rendering</papertitle>
-              </a>
-              <br>
-              <a href="https://zhengqili.github.io/">Zhengqi Li</a>, 
-              <strong>Qianqian Wang</strong>,
-              <a href="https://people.csail.mit.edu/fcole/">Forrester Cole</a>,
-              <a href="https://research.google/people/RichardTucker/">Richard Tucker</a>,
-              <a href="https://www.cs.cornell.edu/~snavely/">Noah Snavely</a>
-              <br>
-              <em>CVPR</em>, 2023 <strong>(Best Paper Honorable Mention)</strong>
-              <br>
+                <tr onmouseout="inf_zero_stop()" onmouseover="inf_zero_start()">
+                  <td style="padding:20px;width:25%;vertical-align:middle">
+                    <div class="one">
+                      <div class="two" id='inf_zero_image'>
+                        <video  width="100%" height="100%" muted autoplay loop>
+                          <source src="images/inf_zero.mp4" type="video/mp4">
+                        </video></div>
+                      <img src='images/inf_zero.jpg' id='inf_zero_before' width="100%">
+                    </div>
+                    <script type="text/javascript">
+                      function inf_zero_start() {
+                        document.getElementById('inf_zero_image').style.opacity = "1";
+                      }
+                      function inf_zero_stop() {
+                        document.getElementById('inf_zero_image').style.opacity = "0";
+                      }
+                      inf_zero_stop()
+                    </script>
+                  </td>
+                  <td style="padding:20px;width:75%;vertical-align:middle">
+                    <a href="https://infinite-nature-zero.github.io/">
+                      <papertitle>InfiniteNature-Zero: Learning Perpetual View Generation of Natural Scenes from Single Images</papertitle>
+                    </a>
+                    <br>
+                    <a href="https://zhengqili.github.io/">Zhengqi Li</a>, 
+                    <strong>Qianqian Wang</strong>,
+                    <a href="https://www.cs.cornell.edu/~snavely/">Noah Snavely</a>,
+                    <a href="https://people.eecs.berkeley.edu/~kanazawa/">Angjoo Kanazawa</a>
+                    <br>
+                    <em>ECCV</em>, 2022 <strong>(Oral)</strong>
+                    <br>
+                    <a href="https://infinite-nature-zero.github.io/">project page</a> /
+                    <a href="https://arxiv.org/abs/2207.11148">arXiv</a> /
+                    <a href="https://github.com/google-research/google-research/tree/master/infinite_nature_zero/">code</a>
+                    <p></p>
+                  </td>
+                </tr>
 
-              <a href="https://dynibar.github.io/">project page</a> / 
-              <a href="https://arxiv.org/abs/2211.11082/">arXiv</a> / 
-              <a href="https://github.com/google/dynibar">code</a>      
-              <p></p>
-            </td>
-          </tr>
+                <tr onmouseout="neural_recon_stop()" onmouseover="neural_recon_start()">
+                  <td style="padding:20px;width:25%;vertical-align:middle">
+                    <div class="one">
+                      <div class="two" id='neuconw_image'>
+                        <video  width="100%" height="100%" muted autoplay loop>
+                          <source src="images/neuconw.mp4" type="video/mp4">
+                        </video>
+                      </div>
+                      <img src='images/neuconw.png' id='neuconw_before' width="100%">
+                    </div>
+                    <script type="text/javascript">
+                      function neural_recon_start() {
+                        document.getElementById('neuconw_image').style.opacity = "1";
+                        document.getElementById('neuconw_before').style.opacity = "0";
+                      }
+                      function neural_recon_stop() {
+                        document.getElementById('neuconw_image').style.opacity = "0";
+                        document.getElementById('neuconw_before').style.opacity = "1";
+                      }
+                      neural_recon_stop()
+                    </script>
+                  </td>
+                  <td style="padding:20px;width:75%;vertical-align:middle">
+                    <a href="https://zju3dv.github.io/neuralrecon-w/">
+                      <papertitle>Neural 3D reconstruction in the wild</papertitle>
+                    </a>
+                    <br>
+                    <a href="https://jiamingsun.ml/">Jiaming Sun</a>,
+                    <a href="https://github.com/BurningDust21">Xi Chen</a>,
+                    <strong>Qianqian Wang</strong>,
+                    <a href="https://zhengqili.github.io/">Zhengqi Li</a>, 
+                    <a href="https://www.elor.sites.tau.ac.il/">Hadar Averbuch-Elor</a>,
+                    <a href="https://xzhou.me/">Xiaowei Zhou</a>,
+                    <a href="https://www.cs.cornell.edu/~snavely/">Noah Snavely</a>
+                    <br>
+                    <em>SIGGRAPH (Conference Proceedings)</em>, 2022 
+                    <br>
+                    <a href="https://zju3dv.github.io/neuralrecon-w/">project page</a> /
+                    <a href="https://arxiv.org/abs/2205.12955">arXiv</a> /
+                    <a href="https://github.com/zju3dv/NeuralRecon-W/">code</a>
+                    <p></p>
+                  </td>
+                </tr>
 
-        <tr onmouseout="chronology_stop()" onmouseover="chronology_start()">
-            <td style="padding:20px;width:25%;vertical-align:middle">
-              <div class="one">
-                <div class="two" id='chronology_image'><video  width=100% height=100% muted autoplay loop>
-                <source src="images/chronology.mp4" type="video/mp4">
-                </video></div>
-                <img src='images/chronology.jpg' id='chronology_before' width=160 >
-              </div>
-              <script type="text/javascript">
-                function chronology_start() {
-                  document.getElementById('chronology_image').style.opacity = "1";
-                }
+                <tr onmouseout="three_d_moments_stop()" onmouseover="three_d_moments_start()">
+                  <td style="padding:20px;width:25%;vertical-align:middle">
+                    <div class="one">
+                      <div class="two" id='3d_moments_image'>
+                        <video  width="100%" height="100%" muted autoplay loop>
+                          <source src="images/3d_moments.mp4" type="video/mp4">
+                        </video>
+                        </div>
+                        <img src='images/3d_moments.png' id='3d_moments_before' width="160" >
+                      </div>
+                    <script type="text/javascript">
+                      function three_d_moments_start() {
+                        document.getElementById('3d_moments_image').style.opacity = "1";
+                        document.getElementById('3d_moments_before').style.opacity = "0";
+                      }
+                      function three_d_moments_stop() {
+                        document.getElementById('3d_moments_image').style.opacity = "0";
+                        document.getElementById('3d_moments_before').style.opacity = "1";
+                      }
+                      three_d_moments_stop()
+                    </script>
+                  </td>
+                  <td style="padding:20px;width:75%;vertical-align:middle">
+                    <a href="https://3d-moments.github.io/">
+                      <papertitle>3D Moments from Near-Duplicate Photos</papertitle>
+                    </a>
+                    <br>
+                    <strong>Qianqian Wang</strong>,
+                    <a href="https://zhengqili.github.io/">Zhengqi Li</a>, 
+                    <a href="http://salesin.cs.washington.edu/">David Salesin</a>, 
+                    <a href="https://www.cs.cornell.edu/~snavely/">Noah Snavely</a>,
+                    <a href="https://homes.cs.washington.edu/~curless/">Brian Curless</a>,
+                    <a href="https://www.linkedin.com/in/jannekontkanen/">Janne Kontkanen</a>
+                    <br>
+                    <em>CVPR</em>, 2022  
+                    <br>
+                    <a href="https://3d-moments.github.io/">project page</a> /
+                    <a href="https://arxiv.org/abs/2205.06255">arXiv</a> /
+                    <a href="https://github.com/google-research/3d-moments">code</a> 
+                    <p></p>
+                  </td>
+                </tr>
 
-                function chronology_stop() {
-                  document.getElementById('chronology_image').style.opacity = "0";
-                }
-                chronology_stop()
-              </script>
-            </td>
+                <tr>
+                  <td style="padding:20px;width:25%;vertical-align:middle">
+                    <div class="one">
+                      <img src='images/manhattan_sdf.png' width="160">
+                    </div>
+                  </td>
+                  <td style="padding:20px;width:75%;vertical-align:middle">
+                    <a href="https://zju3dv.github.io/manhattan_sdf/">
+                      <papertitle>Neural 3D Scene Reconstruction with the Manhattan-world Assumption</papertitle>
+                    </a>
+                    <br>
+                    <a href="https://github.com/ghy0324">Haoyu Guo*</a>,
+                    <a href="https://pengsida.net/">Sida Peng*</a>,
+                    <a href="https://github.com/haotongl">Haotong Lin</a>,
+                    <strong>Qianqian Wang</strong>,
+                    <a href="http://www.cad.zju.edu.cn/home/gfzhang/">Guofeng Zhang</a>,  <br>
+                    <a href="http://www.cad.zju.edu.cn/home/bao/">Hujun Bao</a>,
+                    <a href="https://xzhou.me/">Xiaowei Zhou</a>
+                    <br>
+                    <em>CVPR</em>, 2022 &nbsp <strong>(Oral)</strong>
+                    <br>
+                    <a href="https://zju3dv.github.io/manhattan_sdf/">project page</a>
+                    /
+                    <a href="https://arxiv.org/abs/2205.02836">arXiv</a>
+                    /
+                    <a href="https://github.com/zju3dv/manhattan_sdf">code</a>
+                    <p></p>
+                  </td>
+                </tr>
 
-            <td style="padding:20px;width:75%;vertical-align:middle">
-              <a href="https://zju3dv.github.io/neusc/">
-                <papertitle>Neural Scene Chronology</papertitle>
-              </a>
-              <br>
-              <a href="https://haotongl.github.io/">Haotong Lin</a>, 
-              <strong>Qianqian Wang</strong>,
-              <a href="https://www.cs.cornell.edu/~ruojin/">Ruojin Cai</a>,
-              <a href="https://pengsida.net/">Sida Peng</a>,
-              <a href="https://www.elor.sites.tau.ac.il/">Hadar Averbuch-Elor</a>,
-              <a href="https://xzhou.me/">Xiaowei Zhou</a>,
-              <a href="https://www.cs.cornell.edu/~snavely/">Noah Snavely</a>
-              <br>
-              <em>CVPR</em>, 2023
-              <br>
+                <tr onmouseout="neuray_stop()" onmouseover="neuray_start()">
+                  <td style="padding:20px;width:25%;vertical-align:middle">
+                    <div class="one">
+                      <div class="two" id='neuray_image'>
+                        <video  width="100%" height="100%" muted autoplay loop>
+                          <source src="images/neu_ray.mp4" type="video/mp4">
+                          Your browser does not support the video tag.
+                        </video>
+                      </div>
+                      <img src='images/neu_ray.jpg' width="160">
+                    </div>
+                    <script type="text/javascript">
+                      function neuray_start() {
+                        document.getElementById('neuray_image').style.opacity = "1";
+                      }
+                      function neuray_stop() {
+                        document.getElementById('neuray_image').style.opacity = "0";
+                      }
+                      neuray_stop()
+                    </script>
+                  </td>
+                  <td style="padding:20px;width:75%;vertical-align:middle">
+                    <a href="https://liuyuan-pal.github.io/NeuRay/">
+                      <papertitle>Neural Rays for Occlusion-aware Image-based Rendering</papertitle>
+                    </a>
+                    <br>
+                    <a href="https://liuyuan-pal.github.io/">Yuan Liu</a>,
+                    <a href="https://pengsida.net/">Sida Peng</a>,
+                    <a href="https://lingjie0206.github.io/">Lingjie Liu</a>,
+                    <strong>Qianqian Wang</strong>,
+                    <a href="https://totoro97.github.io/about.html">Peng Wang</a>, <br>
+                    <a href="http://people.mpi-inf.mpg.de/~theobalt/">Christian Theobalt</a>,
+                    <a href="https://xzhou.me/">Xiaowei Zhou</a>,
+                    <a href="https://engineering.tamu.edu/cse/profiles/Wang-Wenping.html">Wenping Wang</a>
+                    <br>
+                    <em>CVPR</em>, 2022
+                    <br>
+                    <a href="https://liuyuan-pal.github.io/NeuRay/">project page</a>
+                    /
+                    <a href="https://arxiv.org/abs/2107.13421">arXiv</a>
+                    /
+                    <a href="https://github.com/liuyuan-pal/NeuRay">code</a>
+                    <p></p>
+                  </td>
+                </tr>
 
-              <a href="https://zju3dv.github.io/neusc/">project page</a> / 
-              <a href="https://arxiv.org/abs/2306.07970">arXiv</a> / 
-              <a href="https://github.com/zju3dv/NeuSC">code</a>      
-              <p></p>
-            </td>
-          </tr>
+                <tr onmouseout="animatable_stop()" onmouseover="animatable_start()">
+                  <td style="padding:20px;width:25%;vertical-align:middle">
+                    <div class="one">
+                      <div class="two" id='animatable_image'>
+                        <video  width="100%" height="100%" muted autoplay loop>
+                          <source src="images/animatable_nerf.mp4" type="video/mp4">
+                          Your browser does not support the video tag.
+                        </video>
+                      </div>
+                      <img src='images/animatable_nerf.png' width="160">
+                    </div>
+                    <script type="text/javascript">
+                      function animatable_start() {
+                        document.getElementById('animatable_image').style.opacity = "1";
+                      }
+                      function animatable_stop() {
+                        document.getElementById('animatable_image').style.opacity = "0";
+                      }
+                      animatable_stop()
+                    </script>
+                  </td>
+                  <td style="padding:20px;width:75%;vertical-align:middle">
+                    <a href="https://zju3dv.github.io/animatable_nerf/">
+                      <papertitle>Animatable Neural Radiance Fields for Modeling Dynamic Human Bodies</papertitle>
+                    </a>
+                    <br>
+                    <a href="https://pengsida.net/">Sida Peng*</a>,
+                    <a href="https://jtdong.com/">Junting Dong*</a>,
+                    <strong>Qianqian Wang</strong>,
+                    Shangzhan Zhang, 
+                    <a href="https://chingswy.github.io/">Qing Shuai</a>, <br>
+                    <a href="https://xzhou.me/">Xiaowei Zhou</a>,
+                    <a href="http://www.cad.zju.edu.cn/home/bao/">Hujun Bao</a>
+                    <br>
+                    <em>ICCV</em>, 2021
+                    <br>
+                    <a href="https://zju3dv.github.io/animatable_nerf/">project page</a> /
+                    <a href="https://arxiv.org/abs/2105.02872">arXiv</a> / 
+                    <a href="https://github.com/zju3dv/animatable_nerf">code</a> 
+                  </td>
+                </tr>
 
-        <tr onmouseout="inf_zero_stop()" onmouseover="inf_zero_start()">
-            <td style="padding:20px;width:25%;vertical-align:middle">
-              <div class="one">
-                <div class="two" id='inf_zero_image'><video  width=100% height=100% muted autoplay loop>
-                <source src="images/inf_zero.mp4" type="video/mp4">
-                </video></div>
-                <img src='images/inf_zero.jpg' id='inf_zero_before' width=100% >
-              </div>
-              <script type="text/javascript">
-                function inf_zero_start() {
-                  document.getElementById('inf_zero_image').style.opacity = "1";
-                }
+                <tr onmouseout="ibrnet_stop()" onmouseover="ibrnet_start()">
+                  <td style="padding:20px;width:25%;vertical-align:middle">
+                    <div class="one">
+                      <div class="two" id='ibrnet_image'>
+                        <video  width="100%" height="100%" muted autoplay loop>
+                          <source src="images/ibrnet_after.mp4" type="video/mp4">
+                          Your browser does not support the video tag.
+                        </video>
+                      </div>
+                      <img src='images/ibrnet_before.jpg' width="160">
+                    </div>
+                    <script type="text/javascript">
+                      function ibrnet_start() {
+                        document.getElementById('ibrnet_image').style.opacity = "1";
+                      }
+                      function ibrnet_stop() {
+                        document.getElementById('ibrnet_image').style.opacity = "0";
+                      }
+                      ibrnet_stop()
+                    </script>
+                  </td>
+                  <td style="padding:20px;width:75%;vertical-align:middle">
+                    <a href="https://ibrnet.github.io/">
+                      <papertitle>IBRNet: Learning Multi-View Image-Based Rendering</papertitle>
+                    </a>
+                    <br>
+                    <strong>Qianqian Wang</strong>,
+                    <a href="https://scholar.google.com/citations?hl=zh-CN&user=2ccN2csAAAAJ">Zhicheng Wang</a>,
+                    <a href="https://www.kylegenova.com/">Kyle Genova</a>,
+                    <a href="https://pratulsrinivasan.github.io/">Pratul Srinivasan</a>,
+                    <a href="https://scholar.google.com/citations?user=Rh9T3EcAAAAJ&hl=en">Howard Zhou</a>, <br>
+                    <a href="https://jonbarron.info/">Jon Barron</a>,
+                    <a href="http://www.ricardomartinbrualla.com/">Ricardo Martin-Brualla</a>,
+                    <a href="https://www.cs.cornell.edu/~snavely/">Noah Snavely</a>, 
+                    <a href="https://www.cs.princeton.edu/~funk/">Thomas Funkhouser</a>
+                    <br>
+                    <em>CVPR</em>, 2021
+                    <br>
+                    <a href="https://ibrnet.github.io/">project page</a> /
+                    <a href="https://arxiv.org/abs/2102.13090">arXiv</a> /
+                    <a href="https://github.com/googleinterns/IBRNet">code</a> 
+                  </td>
+                </tr>
 
-                function inf_zero_stop() {
-                  document.getElementById('inf_zero_image').style.opacity = "0";
-                }
-                inf_zero_stop()
-              </script>
-            </td>
+                <tr>
+                  <td style="padding:20px;width:25%;vertical-align:middle">
+                    <div class="one">
+                      <img src='images/physg.jpg' width="160">
+                    </div>
+                  </td>
+                  <td style="padding:20px;width:75%;vertical-align:middle">
+                    <a href="https://kai-46.github.io/PhySG-website/">
+                      <papertitle>PhySG: Inverse Rendering with Spherical Gaussians for Physics-based Material Editing and Relighting</papertitle>
+                    </a>
+                    <br>
+                    <a href="https://kai-46.github.io/website/">Kai Zhang*</a>,
+                    <a href="https://luanfujun.github.io/">Fujun Luan*</a>,
+                    <strong>Qianqian Wang</strong>,
+                    <a href="https://www.cs.cornell.edu/~kb/">Kavita Bala</a>,
+                    <a href="https://www.cs.cornell.edu/~snavely/">Noah Snavely</a>
+                    <br>
+                    <em>CVPR</em>, 2021
+                    <br>
+                    <a href="https://kai-46.github.io/PhySG-website/">project page</a>
+                    /
+                    <a href="https://arxiv.org/abs/2104.00674">arXiv</a>
+                    /
+                    <a href="https://github.com/Kai-46/PhySG/">code</a>
+                    <p></p>
+                  </td>
+                </tr>
 
-            <td style="padding:20px;width:75%;vertical-align:middle">
-              <a href="https://infinite-nature-zero.github.io/">
-                <papertitle>InfiniteNature-Zero: Learning Perpetual View Generation of Natural Scenes from Single Images</papertitle>
-              </a>
-              <br>
-              <a href="https://zhengqili.github.io/">Zhengqi Li</a>, 
-              <strong>Qianqian Wang</strong>,
-              <a href="https://www.cs.cornell.edu/~snavely/">Noah Snavely</a>,
-              <a href="https://people.eecs.berkeley.edu/~kanazawa/">Angjoo Kanazawa</a>
-              <br>
-              <em>ECCV</em>, 2022 <strong>(Oral)</strong>
-              <br>
+                <tr onmouseout="neuralbody_stop()" onmouseover="neuralbody_start()">
+                  <td style="padding:20px;width:25%;vertical-align:middle">
+                    <div class="one">
+                      <div class="two" id='neuralbody_image'>
+                        <video  width="100%" height="100%" muted autoplay loop>
+                          <source src="images/neural_body.mp4" type="video/mp4">
+                          Your browser does not support the video tag.
+                        </video></div>
+                      <img src='images/neural_body.png' width="160">
+                    </div>
+                    <script type="text/javascript">
+                      function neuralbody_start() {
+                        document.getElementById('neuralbody_image').style.opacity = "1";
+                      }
+                      function neuralbody_stop() {
+                        document.getElementById('neuralbody_image').style.opacity = "0";
+                      }
+                      neuralbody_stop()
+                    </script>
+                  </td>
+                  <td style="padding:20px;width:75%;vertical-align:middle">
+                    <a href="https://zju3dv.github.io/neuralbody/">
+                      <papertitle>Neural Body: Implicit Neural Representations with Structured Latent Codes for Novel View Synthesis of Dynamic Humans</papertitle>
+                    </a>
+                    <br>
+                    <a href="https://pengsida.net/">Sida Peng</a>,
+                    <a href="https://scholar.google.com/citations?user=T-KFNrQAAAAJ&hl=en">Yuanqing Zhang</a>,
+                    <a href="https://justimyhxu.github.io/">Yinghao Xu</a>,
+                    <strong>Qianqian Wang</strong>,
+                    <a href="https://chingswy.github.io/">Qing Shuai</a>, <br>
+                    <a href="http://www.cad.zju.edu.cn/home/bao/">Hujun Bao</a>, 
+                    <a href="https://xzhou.me/">Xiaowei Zhou</a>
+                    <br>
+                    <em>CVPR</em>, 2022 &nbsp <strong>(Best Paper Candidate)</strong>
+                    <br>
+                    <a href="https://zju3dv.github.io/neuralbody/">project page</a>
+                    /
+                    <a href="https://arxiv.org/abs/2012.15838">arXiv</a>
+                    /
+                    <a href="https://github.com/zju3dv/neuralbody">code</a>
+                    <p></p>
+                  </td>
+                </tr>
 
-              <a href="https://infinite-nature-zero.github.io/">project page</a> / 
-              <a href="https://arxiv.org/abs/2207.11148">arXiv</a> / 
-              <a href="https://github.com/google-research/google-research/tree/master/infinite_nature_zero/">code</a>      
-              <p></p>
-            </td>
-          </tr>
+                <tr>
+                  <td style="padding:20px;width:25%;vertical-align:middle">
+                    <div class="one">
+                      <img src='images/caps.png' width="160">
+                    </div>
+                  </td>
+                  <td style="padding:20px;width:75%;vertical-align:middle">
+                    <a href="https://qianqianwang68.github.io/CAPS/">
+                      <papertitle>Learning Feature Descriptors using Camera Pose Supervision</papertitle>
+                    </a>
+                    <br>
+                    <strong>Qianqian Wang</strong>,
+                    <a href="https://xzhou.me/">Xiaowei Zhou</a>,
+                    <a href="http://home.bharathh.info/">Bharath Hariharan</a>,
+                    <a href="https://www.cs.cornell.edu/~snavely/">Noah Snavely</a>
+                    <br>
+                    <em>ECCV</em>, 2020 &nbsp <strong>(Oral)</strong>
+                    <br>
+                    <a href="https://qianqianwang68.github.io/CAPS/">project page</a>
+                    /
+                    <a href="https://arxiv.org/abs/2004.13324">arXiv</a>
+                    /
+                    <a href="https://github.com/qianqianwang68/caps">code</a>
+                    <p></p>
+                  </td>
+                </tr>
 
+                <tr>
+                  <td style="padding:20px;width:25%;vertical-align:middle">
+                    <div class="one">
+                      <img src='images/hidden_footprint.png' width="160">
+                    </div>
+                  </td>
+                  <td style="padding:20px;width:75%;vertical-align:middle">
+                    <a href="https://www.cs.cornell.edu/~jinsun/hidden_footprints.html">
+                      <papertitle>Hidden Footprints: Learning Contextual Walkability from 3d Human Trails</papertitle>
+                    </a>
+                    <br>
+                    <a href="https://www.cs.cornell.edu/~jinsun/">Jin Sun</a>,
+                    <a href="https://www.elor.sites.tau.ac.il/">Hadar Averbuch-Elor</a>,
+                    <strong>Qianqian Wang</strong>,
+                    <a href="https://www.cs.cornell.edu/~snavely/">Noah Snavely</a>
+                    <br>
+                    <em>ECCV</em>, 2020
+                    <br>
+                    <a href="https://www.cs.cornell.edu/~jinsun/hidden_footprints.html">project page</a>
+                    /
+                    <a href="https://arxiv.org/abs/2008.08701">arXiv</a>
+                    /
+                    <a href="https://github.com/jinsungit/hiddenfootprints">code</a>
+                    <p></p>
+                  </td>
+                </tr>
 
-          <tr onmouseout="neural_recon_stop()" onmouseover="neural_recon_start()">
-            <td style="padding:20px;width:25%;vertical-align:middle">
-              <div class="one">
-                <div class="two" id='neuconw_image'><video  width=100% height=100% muted autoplay loop>
-                <source src="images/neuconw.mp4" type="video/mp4">
-                </video></div>
-                <img src='images/neuconw.png' id='neuconw_before' width=100% >
-              </div>
-              <script type="text/javascript">
-                function neural_recon_start() {
-                  document.getElementById('neuconw_image').style.opacity = "1";
-                  document.getElementById('neuconw_before').style.opacity = "0";
-                }
+                <tr>
+                  <td style="padding:20px;width:25%;vertical-align:middle">
+                    <div class="one">
+                      <img src='images/multi_image_matching.png' width="160">
+                    </div>
+                  </td>
+                  <td style="padding:20px;width:75%;vertical-align:middle">
+                    <a href="https://arxiv.org/abs/1711.07641">
+                      <papertitle>Multi-Image Semantic Matching by Mining Consistent Features</papertitle>
+                    </a>
+                    <br>
+                    <strong>Qianqian Wang</strong>,
+                    <a href="https://xzhou.me/">Xiaowei Zhou</a>,
+                    <a href="https://www.cis.upenn.edu/~kostas/">Kostas Daniilidis</a>
+                    <br>
+                    <em>CVPR</em>, 2018
+                    <br>
+                    <a href="https://arxiv.org/abs/1711.07641">arXiv</a>
+                    /
+                    <a href="https://github.com/zju-3dv/multiway">code</a>
+                    <p></p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
 
-                function neural_recon_stop() {
-                  document.getElementById('neuconw_image').style.opacity = "0";
-                  document.getElementById('neuconw_before').style.opacity = "1";
-                }
-                neural_recon_stop()
-              </script>
-            </td>
+          <table style="width:100%;border:0px;border-spacing:0px;margin-right:auto;margin-left:auto;">
+            <tbody>
+              <tr>
+                <td style="padding:0px">
+                  <br>
+                  <p style="text-align:right;font-size:small;">
+                    Thank <a href="https://jonbarron.info/">Jon Barron</a> for sharing his website's 
+                    <a href="https://github.com/jonbarron/website">source code</a>.
+                  </p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
 
-            <td style="padding:20px;width:75%;vertical-align:middle">
-              <a href="https://zju3dv.github.io/neuralrecon-w/">
-                <papertitle>Neural 3D reconstruction in the wild</papertitle>
-              </a>
-              <br>
-              <a href="https://jiamingsun.ml/">Jiaming Sun</a>,
-              <a href="https://github.com/BurningDust21">Xi Chen</a>,
-              <strong>Qianqian Wang</strong>,
-              <a href="https://zhengqili.github.io/">Zhengqi Li</a>, 
-              <a href="https://www.elor.sites.tau.ac.il/">Hadar Averbuch-Elor</a>,
-              <a href="https://xzhou.me/">Xiaowei Zhou</a>,
-              <a href="https://www.cs.cornell.edu/~snavely/">Noah Snavely</a>
-              <br>
-              <em>SIGGRAPH (Conference Proceedings)</em>, 2022 
-              <br>
-
-              <a href="https://zju3dv.github.io/neuralrecon-w/">project page</a> / 
-              <a href="https://arxiv.org/abs/2205.12955">arXiv</a> / 
-              <a href="https://github.com/zju3dv/NeuralRecon-W/">code</a>      
-              <p></p>
-            </td>
-          </tr>
-
-          <tr onmouseout="three_d_moments_stop()" onmouseover="three_d_moments_start()">
-            <td style="padding:20px;width:25%;vertical-align:middle">
-              <div class="one">
-                <div class="two" id='3d_moments_image'><video  width=100% height=100% muted autoplay loop>
-                <source src="images/3d_moments.mp4" type="video/mp4">
-                </video></div>
-                <img src='images/3d_moments.png' id='3d_moments_before' width="160" >
-              </div>
-              <script type="text/javascript">
-                function three_d_moments_start() {
-                  document.getElementById('3d_moments_image').style.opacity = "1";
-                  document.getElementById('3d_moments_before').style.opacity = "0";
-                }
-
-                function three_d_moments_stop() {
-                  document.getElementById('3d_moments_image').style.opacity = "0";
-                  document.getElementById('3d_moments_before').style.opacity = "1";
-                }
-                three_d_moments_stop()
-              </script>
-            </td>
-
-            <td style="padding:20px;width:75%;vertical-align:middle">
-							<a href="https://3d-moments.github.io/">
-                <papertitle>3D Moments from Near-Duplicate Photos</papertitle>
-              </a>
-              <br>
-              <strong>Qianqian Wang</strong>,
-              <a href="https://zhengqili.github.io/">Zhengqi Li</a>, 
-              <a href="http://salesin.cs.washington.edu/">David Salesin</a>, 
-              <a href="https://www.cs.cornell.edu/~snavely/">Noah Snavely</a>,
-              <a href="https://homes.cs.washington.edu/~curless/">Brian Curless</a>,
-              <a href="https://www.linkedin.com/in/jannekontkanen/">Janne Kontkanen</a>
-
-              <br>
-              <em>CVPR</em>, 2022  
-              <br>
-
-							<a href="https://3d-moments.github.io/">project page</a> / 
-							<a href="https://arxiv.org/abs/2205.06255">arXiv</a> / 
-							<a href="https://github.com/google-research/3d-moments">code</a> 			
-              <p></p>
-            </td>
-          </tr>
-					
-          <tr >
-            <td style="padding:20px;width:25%;vertical-align:middle">
-              <div class="one">
-                <img src='images/manhattan_sdf.png' width="160">
-              </div>
-            </td>
-            <td style="padding:20px;width:75%;vertical-align:middle">
-              <a href="https://zju3dv.github.io/manhattan_sdf/">
-                <papertitle>Neural 3D Scene Reconstruction with the Manhattan-world Assumption</papertitle>
-              </a>
-              <br>
-              <a href="https://github.com/ghy0324">Haoyu Guo*</a>,
-              <a href="https://pengsida.net/">Sida Peng*</a>,
-              <a href="https://github.com/haotongl">Haotong Lin</a>,
-              <strong>Qianqian Wang</strong>,
-              <a href="http://www.cad.zju.edu.cn/home/gfzhang/">Guofeng Zhang</a>,  <br>
-              <a href="http://www.cad.zju.edu.cn/home/bao/">Hujun Bao</a>,
-              <a href="https://xzhou.me/">Xiaowei Zhou</a>
-              <br>
-							<em>CVPR</em>, 2022 &nbsp <strong>(Oral)</strong>
-              <br>
-              <a href="https://zju3dv.github.io/manhattan_sdf/">project page</a>
-              /
-              <a href="https://arxiv.org/abs/2205.02836">arXiv</a>
-              /
-              <a href="https://github.com/zju3dv/manhattan_sdf">code</a>
-              <p></p>
-            </td>
-          </tr> 
-
-    <tr onmouseout="neuray_stop()" onmouseover="neuray_start()">
-      <td style="padding:20px;width:25%;vertical-align:middle">
-        <div class="one">
-          <div class="two" id='neuray_image'><video  width=100% height=100% muted autoplay loop>
-          <source src="images/neu_ray.mp4" type="video/mp4">
-          Your browser does not support the video tag.
-          </video></div>
-          <img src='images/neu_ray.jpg' width="160">
-        </div>
-        <script type="text/javascript">
-          function neuray_start() {
-            document.getElementById('neuray_image').style.opacity = "1";
-          }
-
-          function neuray_stop() {
-            document.getElementById('neuray_image').style.opacity = "0";
-          }
-          neuray_stop()
-        </script>
-      </td>
-            <td style="padding:20px;width:75%;vertical-align:middle">
-          <a href="https://liuyuan-pal.github.io/NeuRay/">
-            <papertitle>Neural Rays for Occlusion-aware Image-based Rendering</papertitle>
-          </a>
-          <br>
-          <a href="https://liuyuan-pal.github.io/">Yuan Liu</a>,
-          <a href="https://pengsida.net/">Sida Peng</a>,
-          <a href="https://lingjie0206.github.io/">Lingjie Liu</a>,
-          <strong>Qianqian Wang</strong>,
-          <a href="https://totoro97.github.io/about.html">Peng Wang</a>, <br>
-          <a href="http://people.mpi-inf.mpg.de/~theobalt/">Christian Theobalt</a>,
-          <a href="https://xzhou.me/">Xiaowei Zhou</a>,
-          <a href="https://engineering.tamu.edu/cse/profiles/Wang-Wenping.html">Wenping Wang</a>
-          <br>
-          <em>CVPR</em>, 2022
-          <br>
-          <a href="https://liuyuan-pal.github.io/NeuRay/">project page</a>
-          /
-          <a href="https://arxiv.org/abs/2107.13421">arXiv</a>
-          /
-          <a href="https://github.com/liuyuan-pal/NeuRay">code</a>
-          <p></p>
         </td>
       </tr>
-
-          <tr onmouseout="animatable_stop()" onmouseover="animatable_start()">
-            <td style="padding:20px;width:25%;vertical-align:middle">
-              <div class="one">
-                <div class="two" id='animatable_image'><video  width=100% height=100% muted autoplay loop>
-                <source src="images/animatable_nerf.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-                </video></div>
-                <img src='images/animatable_nerf.png' width="160">
-              </div>
-              <script type="text/javascript">
-                function animatable_start() {
-                  document.getElementById('animatable_image').style.opacity = "1";
-                }
-
-                function animatable_stop() {
-                  document.getElementById('animatable_image').style.opacity = "0";
-                }
-                animatable_stop()
-              </script>
-            </td>
-            <td style="padding:20px;width:75%;vertical-align:middle">
-              <a href="https://zju3dv.github.io/animatable_nerf/">
-                <papertitle>Animatable Neural Radiance Fields for Modeling Dynamic Human Bodies</papertitle>
-              </a>
-              <br>
-              <a href="https://pengsida.net/">Sida Peng*</a>,
-              <a href="https://jtdong.com/">Junting Dong*</a>,
-              <strong>Qianqian Wang</strong>,
-              Shangzhan Zhang, 
-              <a href="https://chingswy.github.io/">Qing Shuai</a>, <br>
-              <a href="https://xzhou.me/">Xiaowei Zhou</a>,
-              <a href="http://www.cad.zju.edu.cn/home/bao/">Hujun Bao</a>
-              <br>
-              <em>ICCV</em>, 2021
-              <br>
-              <a href="https://zju3dv.github.io/animatable_nerf/">project page</a> /
-              <a href="https://github.com/zju3dv/animatable_nerf">code</a> / 
-              <a href="https://arxiv.org/abs/2105.02872">arXiv</a>
-            </td>
-          </tr>
-
-          <tr onmouseout="ibrnet_stop()" onmouseover="ibrnet_start()">
-            <td style="padding:20px;width:25%;vertical-align:middle">
-              <div class="one">
-                <div class="two" id='ibrnet_image'><video  width=100% height=100% muted autoplay loop>
-                <source src="images/ibrnet_after.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-                </video></div>
-                <img src='images/ibrnet_before.jpg' width="160">
-              </div>
-              <script type="text/javascript">
-                function ibrnet_start() {
-                  document.getElementById('ibrnet_image').style.opacity = "1";
-                }
-
-                function ibrnet_stop() {
-                  document.getElementById('ibrnet_image').style.opacity = "0";
-                }
-                ibrnet_stop()
-              </script>
-            </td>
-            <td style="padding:20px;width:75%;vertical-align:middle">
-              <a href="https://ibrnet.github.io/">
-                <papertitle>IBRNet: Learning Multi-View Image-Based Rendering</papertitle>
-              </a>
-              <br>
-              <strong>Qianqian Wang</strong>,
-              <a href="https://scholar.google.com/citations?hl=zh-CN&user=2ccN2csAAAAJ">Zhicheng Wang</a>,
-              <a href="https://www.kylegenova.com/">Kyle Genova</a>,
-              <a href="https://pratulsrinivasan.github.io/">Pratul Srinivasan</a>,
-              <a href="https://scholar.google.com/citations?user=Rh9T3EcAAAAJ&hl=en">Howard Zhou</a>, <br>
-              <a href="https://jonbarron.info/">Jon Barron</a>,
-              <a href="http://www.ricardomartinbrualla.com/">Ricardo Martin-Brualla</a>,
-              <a href="https://www.cs.cornell.edu/~snavely/">Noah Snavely</a>, 
-              <a href="https://www.cs.princeton.edu/~funk/">Thomas Funkhouser</a>
-              <br>
-              <em>CVPR</em>, 2021
-              <br>
-              <a href="https://ibrnet.github.io/">project page</a> /
-              <a href="https://github.com/googleinterns/IBRNet">code</a> / 
-              <a href="https://arxiv.org/abs/2102.13090">arXiv</a>
-            </td>
-          </tr>
-
-          <tr>
-            <td style="padding:20px;width:25%;vertical-align:middle">
-              <div class="one">
-                <img src='images/physg.jpg' width="160">
-              </div>
-            </td>
-            <td style="padding:20px;width:75%;vertical-align:middle">
-              <a href="https://kai-46.github.io/PhySG-website/">
-                <papertitle>PhySG: Inverse Rendering with Spherical Gaussians for Physics-based Material Editing and Relighting</papertitle>
-              </a>
-              <br>
-              <a href="https://kai-46.github.io/website/">Kai Zhang*</a>,
-              <a href="https://luanfujun.github.io/">Fujun Luan*</a>,
-              <strong>Qianqian Wang</strong>,
-              <a href="https://www.cs.cornell.edu/~kb/">Kavita Bala</a>,
-              <a href="https://www.cs.cornell.edu/~snavely/">Noah Snavely</a>
-              <br>
-							<em>CVPR</em>, 2021
-              <br>
-              <a href="https://kai-46.github.io/PhySG-website/">project page</a>
-        /
-              <a href="https://arxiv.org/abs/2104.00674">arXiv</a>
-        /
-              <a href="https://github.com/Kai-46/PhySG/">code</a>
-              <p></p>
-            </td>
-          </tr> 
-					
-   
-          <tr onmouseout="neuralbody_stop()" onmouseover="neuralbody_start()">
-            <td style="padding:20px;width:25%;vertical-align:middle">
-              <div class="one">
-                <div class="two" id='neuralbody_image'><video  width=100% height=100% muted autoplay loop>
-                <source src="images/neural_body.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-                </video></div>
-                <img src='images/neural_body.png' width="160">
-              </div>
-              <script type="text/javascript">
-                function neuralbody_start() {
-                  document.getElementById('neuralbody_image').style.opacity = "1";
-                }
-
-                function neuralbody_stop() {
-                  document.getElementById('neuralbody_image').style.opacity = "0";
-                }
-                neuralbody_stop()
-              </script>
-            </td>
-            <td style="padding:20px;width:75%;vertical-align:middle">
-              <a href="https://zju3dv.github.io/neuralbody/">
-                <papertitle>Neural Body: Implicit Neural Representations with Structured Latent Codes for Novel View Synthesis of Dynamic Humans</papertitle>
-              </a>
-              <br>
-              <a href="https://pengsida.net/">Sida Peng</a>,
-              <a href="https://scholar.google.com/citations?user=T-KFNrQAAAAJ&hl=en">Yuanqing Zhang</a>,
-              <a href="https://justimyhxu.github.io/">Yinghao Xu</a>,
-              <strong>Qianqian Wang</strong>,
-              <a href="https://chingswy.github.io/">Qing Shuai</a>, <br>
-               <a href="http://www.cad.zju.edu.cn/home/bao/">Hujun Bao</a>, 
-              <a href="https://xzhou.me/">Xiaowei Zhou</a>
-              <br>
-        <em>CVPR</em>, 2022 &nbsp <strong>(Best Paper Candidate)</strong>
-              <br>
-              <a href="https://zju3dv.github.io/neuralbody/">project page</a>
-        /
-              <a href="https://arxiv.org/abs/2012.15838">arXiv</a>
-        /
-              <a href="https://github.com/zju3dv/neuralbody">code</a>
-              <p></p>
-            </td>
-          </tr> 
-
-
-          <tr>
-            <td style="padding:20px;width:25%;vertical-align:middle">
-              <div class="one">
-                <img src='images/caps.png' width="160">
-              </div>
-            </td>
-            <td style="padding:20px;width:75%;vertical-align:middle">
-							<a href="https://qianqianwang68.github.io/CAPS/">
-                <papertitle>Learning Feature Descriptors using Camera Pose Supervision</papertitle>
-              </a>
-              <br>
-              <strong>Qianqian Wang</strong>,
-              <a href="https://xzhou.me/">Xiaowei Zhou</a>,
-              <a href="http://home.bharathh.info/">Bharath Hariharan</a>,
-              <a href="https://www.cs.cornell.edu/~snavely/">Noah Snavely</a>
-              <br>
-        <em>ECCV</em>, 2020 &nbsp <strong>(Oral)</strong>
-              <br>
-              <a href="https://qianqianwang68.github.io/CAPS/">project page</a>
-        /
-              <a href="https://arxiv.org/abs/2004.13324">arXiv</a>
-        /
-              <a href="https://github.com/qianqianwang68/caps">code</a>
-              <p></p>
-            </td>
-          </tr>
-					
-          <tr>
-            <td style="padding:20px;width:25%;vertical-align:middle">
-              <div class="one">
-                <img src='images/hidden_footprint.png' width="160">
-              </div>
-            </td>
-            <td style="padding:20px;width:75%;vertical-align:middle">
-              <a href="https://www.cs.cornell.edu/~jinsun/hidden_footprints.html">
-                <papertitle>Hidden Footprints: Learning Contextual Walkability from 3d Human Trails</papertitle>
-              </a>
-              <br>
-              <a href="https://www.cs.cornell.edu/~jinsun/">Jin Sun</a>,
-              <a href="https://www.elor.sites.tau.ac.il/">Hadar Averbuch-Elor</a>,
-              <strong>Qianqian Wang</strong>,
-              <a href="https://www.cs.cornell.edu/~snavely/">Noah Snavely</a>
-              <br>
-              <em>ECCV</em>, 2020
-              <br>
-              <a href="https://www.cs.cornell.edu/~jinsun/hidden_footprints.html">project page</a>
-              /
-              <a href="https://arxiv.org/abs/2008.08701">arXiv</a>
-              /
-              <a href="https://github.com/jinsungit/hiddenfootprints">code</a>
-              <p></p>
-            </td>
-          </tr>
-					
-          <tr>
-            <td style="padding:20px;width:25%;vertical-align:middle">
-              <div class="one">
-                <img src='images/multi_image_matching.png' width="160">
-              </div>
-            </td>
-            <td style="padding:20px;width:75%;vertical-align:middle">
-              <a href="https://arxiv.org/abs/1711.07641">
-                <papertitle>Multi-Image Semantic Matching by Mining Consistent Features</papertitle>
-              </a>
-              <br>
-              <strong>Qianqian Wang</strong>,
-              <a href="https://xzhou.me/">Xiaowei Zhou</a>,
-              <a href="https://www.cis.upenn.edu/~kostas/">Kostas Daniilidis</a>
-              <br>
-							<em>CVPR</em>, 2018
-              <br>
-              <a href="https://arxiv.org/abs/1711.07641">arXiv</a>
-              /
-              <a href="https://github.com/zju-3dv/multiway">code</a>
-              <p></p>
-            </td>
-          </tr> 
-
-        <table style="width:100%;border:0px;border-spacing:0px;margin-right:auto;margin-left:auto;"><tbody>
-          <tr>
-            <td style="padding:0px">
-              <br>
-              <p style="text-align:right;font-size:small;">
-                Thank <a href="https://jonbarron.info/">Jon Barron</a> for sharing his website's <a href="https://github.com/jonbarron/website">source code</a>.
-              </p>
-            </td>
-          </tr>
-        </tbody></table>
-      </td>
-    </tr>
+    </tbody>
   </table>
-
 </body>
-
 </html>
