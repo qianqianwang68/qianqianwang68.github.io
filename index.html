@@ -11,26 +11,71 @@
   <link rel="icon" href="images/icon.png" type="image/svg+xml">
 </head>
 
-<script type="text/javascript">
+<style>
+  /* A simple utility class to hide one container. */
+  .hidden {
+    display: none;
+  }
+</style>
+
+  <script>
     function showPubs(id) {
-        if (id == 0) {
-            // show selected
-            document.getElementById('pubs').innerHTML = document.getElementById('pubs_selected').innerHTML;
-            document.getElementById('select0').style = 'text-decoration:underline;color:#000000';
-            document.getElementById('select1').style = '';
-        } else if (id == 1) {
-            // show all by date
-            document.getElementById('pubs').innerHTML = document.getElementById('pubs_by_date').innerHTML;
-            document.getElementById('select1').style = 'text-decoration:underline;color:#000000';
-            document.getElementById('select0').style = '';
-        }
+      // id=0 => "Selected"; id=1 => "All"
+
+      if (id == 0) {
+        document.getElementById('pubs_selected').classList.remove('hidden');
+        document.getElementById('pubs_by_date').classList.add('hidden');
+        document.getElementById('select0').style = 'text-decoration:underline;';
+        document.getElementById('select1').style = '';
+      } else {
+        document.getElementById('pubs_selected').classList.add('hidden');
+        document.getElementById('pubs_by_date').classList.remove('hidden');
+        document.getElementById('select1').style = 'text-decoration:underline;';
+        document.getElementById('select0').style = '';
+      }
+
+      // Save user’s choice
+      sessionStorage.setItem('activeTab', id);
     }
-    
-    // Set the default view to "show selected" when the page loads
-    window.onload = function() {
-        showPubs(0);
-    }
-</script>
+
+    // On page load, restore the previously active tab (or default to 0)
+    window.addEventListener('DOMContentLoaded', function() {
+      let activeTab = sessionStorage.getItem('activeTab');
+      if (activeTab === null) {
+        activeTab = 0; // default
+      }
+      showPubs(activeTab);
+    });
+  </script>
+
+<style>
+/* The container that holds both the image and the overlaid video */
+.preview-container {
+  position: relative;
+  display: inline-block;  /* ensures container size follows the image's size */
+}
+
+/* The overlay that fades in/out on hover */
+.preview-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  /* Hidden by default, fades in on hover via JS */
+  opacity: 0;  
+  transition: opacity 0.3s ease;  
+  overflow: hidden;  /* hides any video overshoot if aspect ratios differ */
+}
+
+/* Make the video fill the container while preserving aspect ratio */
+.preview-overlay video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;  /* or 'contain' for letterboxing */
+}
+</style>
 
 <body>
   <table style="width:100%;max-width:800px;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
@@ -46,12 +91,11 @@
                   </p>
                   I am a postdoctoral researcher at <a href="https://www.berkeley.edu/">UC Berkeley</a>, working with 
                   <a href="https://people.eecs.berkeley.edu/~kanazawa/">Prof. Angjoo Kanazawa</a> and 
-                  <a href="https://people.eecs.berkeley.edu/~efros/">Prof. Alexei A. Efros</a>. Additionally, I'm a research consultant at 
-                  <a href="https://deepmind.google/">Google DeepMind</a>. I completed my PhD in Computer Science at 
+                  <a href="https://people.eecs.berkeley.edu/~efros/">Prof. Alexei A. Efros</a>. I completed my PhD in Computer Science at 
                   <a href="https://tech.cornell.edu/">Cornell Tech</a>, <a href="https://www.cornell.edu/">Cornell University</a> with 
                   my advisors <a href="http://www.cs.cornell.edu/~snavely/">Prof. Noah Snavely</a> and 
                   <a href="http://home.bharathh.info/">Prof. Bharath Hariharan</a>. Before that I received my bachelor's degree from 
-                  <a href="https://www.zju.edu.cn/english/">Zhejiang University,</a> working with 
+                  <a href="https://www.zju.edu.cn/english/">Zhejiang University</a>, working with 
                   <a href="https://xzhou.me/">Prof. Xiaowei Zhou</a>.
                   <p>
                     My current research focuses on understanding and modeling the dynamic 3D world from everyday images and videos.
@@ -59,6 +103,9 @@
                   </p>
                   <p>
                     <strong>I am on the academic job market this year (2024-2025).</strong> 
+                  </p>
+                  <p style="font-style: italic;">
+                    (Qianqian is pronounced like "chyen-chyen")
                   </p>
                   <p style="text-align:center">
                     <a href="mailto:qianqianwang@berkeley.edu">Email</a> &nbsp;/&nbsp;
@@ -96,14 +143,13 @@
           <div id="pubs"></div>
 
           <!-- Hidden container: first two publications only (show selected) -->
-          <div id="pubs_selected" style="display:none;">
+          <div id="pubs_selected" class="hidden">
             <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
               <tbody>
-
                 <tr onmouseout="som_stop()" onmouseover="som_start()">
                   <td style="padding:20px;width:25%;vertical-align:middle">
                     <div class="one">
-                      <div class="two" id='som_image_all'>
+                      <div class="two" id='som_image'>
                         <video width="100%" height="100%" muted autoplay loop>
                           <source src="images/som.mp4" type="video/mp4">
                         </video>
@@ -112,10 +158,10 @@
                     </div>
                     <script type="text/javascript">
                       function som_start() {
-                        document.getElementById('som_image_all').style.opacity = "1";
+                        document.getElementById('som_image').style.opacity = "1";
                       }
                       function som_stop() {
-                        document.getElementById('som_image_all').style.opacity = "0";
+                        document.getElementById('som_image').style.opacity = "0";
                       }
                       som_stop()
                     </script>
@@ -189,10 +235,10 @@
                   </td>
                 </tr>
 
-                <tr onmouseout="dift_stop()" onmouseover="dift_start()">
+                <tr onmouseout="dift_stop_all()" onmouseover="dift_start_all()">
                   <td style="padding:20px;width:25%;vertical-align:middle">
                     <div class="one">
-                      <div class="two" id='dift_image'>
+                      <div class="two" id='dift_image_all'>
                         <video  width="100%" height="100%" muted autoplay loop>
                           <source src="images/dift.mp4" type="video/mp4">
                         </video>
@@ -200,13 +246,13 @@
                       <img src='images/dift.png' id='dift_before' width="160">
                     </div>
                     <script type="text/javascript">
-                      function dift_start() {
-                        document.getElementById('dift_image').style.opacity = "1";
+                      function dift_start_all() {
+                        document.getElementById('dift_image_all').style.opacity = "1";
                       }
-                      function dift_stop() {
-                        document.getElementById('dift_image').style.opacity = "0";
+                      function dift_stop_all() {
+                        document.getElementById('dift_image_all').style.opacity = "0";
                       }
-                      dift_stop()
+                      dift_stop_all()
                     </script>
                   </td>
                   <td style="padding:20px;width:75%;vertical-align:middle">
@@ -229,10 +275,10 @@
                   </td>
                 </tr>
 
-                <tr onmouseout="omnimotion_stop()" onmouseover="omnimotion_start()">
+                <tr onmouseout="omnimotion_stop_all()" onmouseover="omnimotion_start_all()">
                   <td style="padding:20px;width:25%;vertical-align:middle">
                     <div class="one">
-                      <div class="two" id='omnimotion_image'>
+                      <div class="two" id='omnimotion_image_all'>
                         <video  width="100%" height="100%" muted autoplay loop>
                           <source src="images/omnimotion.mp4" type="video/mp4">
                         </video>
@@ -240,13 +286,13 @@
                       <img src='images/omnimotion.jpg' id='omnimotion_before' width="160">
                     </div>
                     <script type="text/javascript">
-                      function omnimotion_start() {
-                        document.getElementById('omnimotion_image').style.opacity = "1";
+                      function omnimotion_start_all() {
+                        document.getElementById('omnimotion_image_all').style.opacity = "1";
                       }
-                      function omnimotion_stop() {
-                        document.getElementById('omnimotion_image').style.opacity = "0";
+                      function omnimotion_stop_all() {
+                        document.getElementById('omnimotion_image_all').style.opacity = "0";
                       }
-                      omnimotion_stop()
+                      omnimotion_stop_all()
                     </script>
                   </td>
                   <td style="padding:20px;width:75%;vertical-align:middle">
@@ -271,10 +317,10 @@
                   </td>
                 </tr>
 
-                <tr onmouseout="dynibar_stop()" onmouseover="dynibar_start()">
+                <tr onmouseout="dynibar_stop_all()" onmouseover="dynibar_start_all()">
                   <td style="padding:20px;width:25%;vertical-align:middle">
                     <div class="one">
-                      <div class="two" id='dynibar_image'>
+                      <div class="two" id='dynibar_image_all'>
                         <video  width="100%" height="100%" muted autoplay loop>
                           <source src="images/dynibar.mp4" type="video/mp4">
                         </video>
@@ -282,13 +328,13 @@
                       <img src='images/dynibar.jpg' id='dynibar_before' width="160">
                     </div>
                     <script type="text/javascript">
-                      function dynibar_start() {
-                        document.getElementById('dynibar_image').style.opacity = "1";
+                      function dynibar_start_all() {
+                        document.getElementById('dynibar_image_all').style.opacity = "1";
                       }
-                      function dynibar_stop() {
-                        document.getElementById('dynibar_image').style.opacity = "0";
+                      function dynibar_stop_all() {
+                        document.getElementById('dynibar_image_all').style.opacity = "0";
                       }
-                      dynibar_stop()
+                      dynibar_stop_all()
                     </script>
                   </td>
                   <td style="padding:20px;width:75%;vertical-align:middle">
@@ -311,24 +357,24 @@
                   </td>
                 </tr>
 
-                <tr onmouseout="three_d_moments_stop()" onmouseover="three_d_moments_start()">
+                <tr onmouseout="three_d_moments_stop_all()" onmouseover="three_d_moments_start_all()">
                   <td style="padding:20px;width:25%;vertical-align:middle">
                     <div class="one">
-                      <div class="two" id='3d_moments_image'>
+                      <div class="two" id='3d_moments_image_all'>
                         <video  width="100%" height="100%" muted autoplay loop>
                           <source src="images/3d_moments.mp4" type="video/mp4">
                         </video>
                         </div>
-                        <img src='images/3d_moments.png' id='3d_moments_before' width="160" >
+                        <img src='images/3d_moments.png' id='3d_moments_before_all' width="160" >
                       </div>
                     <script type="text/javascript">
-                      function three_d_moments_start() {
-                        document.getElementById('3d_moments_image').style.opacity = "1";
-                        document.getElementById('3d_moments_before').style.opacity = "0";
+                      function three_d_moments_start_all() {
+                        document.getElementById('3d_moments_image_all').style.opacity = "1";
+                        document.getElementById('3d_moments_before_all').style.opacity = "0";
                       }
-                      function three_d_moments_stop() {
-                        document.getElementById('3d_moments_image').style.opacity = "0";
-                        document.getElementById('3d_moments_before').style.opacity = "1";
+                      function three_d_moments_stop_all() {
+                        document.getElementById('3d_moments_image_all').style.opacity = "0";
+                        document.getElementById('3d_moments_before_all').style.opacity = "1";
                       }
                       three_d_moments_stop()
                     </script>
@@ -354,10 +400,10 @@
                   </td>
                 </tr>
 
-                <tr onmouseout="ibrnet_stop()" onmouseover="ibrnet_start()">
+                <tr onmouseout="ibrnet_stop_all()" onmouseover="ibrnet_start_all()">
                   <td style="padding:20px;width:25%;vertical-align:middle">
                     <div class="one">
-                      <div class="two" id='ibrnet_image'>
+                      <div class="two" id='ibrnet_image_all'>
                         <video  width="100%" height="100%" muted autoplay loop>
                           <source src="images/ibrnet_after.mp4" type="video/mp4">
                           Your browser does not support the video tag.
@@ -366,13 +412,13 @@
                       <img src='images/ibrnet_before.jpg' width="160">
                     </div>
                     <script type="text/javascript">
-                      function ibrnet_start() {
-                        document.getElementById('ibrnet_image').style.opacity = "1";
+                      function ibrnet_start_all() {
+                        document.getElementById('ibrnet_image_all').style.opacity = "1";
                       }
-                      function ibrnet_stop() {
-                        document.getElementById('ibrnet_image').style.opacity = "0";
+                      function ibrnet_stop_all() {
+                        document.getElementById('ibrnet_image_all').style.opacity = "0";
                       }
-                      ibrnet_stop()
+                      ibrnet_stop_all()
                     </script>
                   </td>
                   <td style="padding:20px;width:75%;vertical-align:middle">
@@ -454,12 +500,56 @@
           </div>
           
           <!-- Hidden container: all publications (show all by date) -->
-          <div id="pubs_by_date" style="display:none;">
+          <div id="pubs_by_date" class="hidden">
             <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
               <tbody>
-                <!-- (Below is exactly the same big table of all pubs.) -->
-                
-                <tr onmouseout="som_stop()" onmouseover="som_start()">
+
+                <tr onmouseout="rsrd_stop()" onmouseover="rsrd_start()">
+                  <td style="padding:20px;width:25%;vertical-align:middle">
+                    <div class="preview-container">
+                      <div class="preview-overlay" id='rsrd_image_all'>
+                        <video width="100%" height="100%" muted autoplay loop>
+                          <source src="images/rsrd.mp4" type="video/mp4">
+                        </video>
+                      </div>
+                      <img src='images/rsrd.png' id='rsrd_before'  width="160" alt="thumbnail">
+                    </div>
+                    <script type="text/javascript">
+                      function rsrd_start() {
+                        document.getElementById('rsrd_image_all').style.opacity = "1";
+                      }
+                      function rsrd_stop() {
+                        document.getElementById('rsrd_image_all').style.opacity = "0";
+                      }
+                      rsrd_stop()
+                    </script>
+                  </td>
+
+                  <td style="padding:20px;width:75%;vertical-align:middle">
+                    <a href="https://robot-see-robot-do.github.io/">
+                      <papertitle> Robot See Robot Do: Imitating Articulated Object Manipulation with Monocular 4D Reconstruction </papertitle>
+                    </a>
+                    <br>
+                    <a href="https://kerrj.github.io/">Justin Kerr*</a>,
+                    <a href="https://chungmin99.github.io/">Chung Min Kim*</a>,
+                    <a href="https://mingxuan-w.github.io/website/">Mingxuan Wu</a>,
+                    <a href="https://brentyi.github.io/">Brent Yi</a>,
+                    <strong>Qianqian Wang</strong>,
+                    <a href="https://goldberg.berkeley.edu/">Ken Goldberg</a>,
+                    <a href="https://people.eecs.berkeley.edu/~kanazawa/">Angjoo Kanazawa</a>
+                    <br>
+                    <em>CoRL</em>, 2024 (<strong>Oral</strong>)
+                    <br>
+                    <a href="ttps://robot-see-robot-do.github.io/">project page</a>
+                    /
+                    <a href="https://arxiv.org/abs/2409.18121">arXiv</a>
+                    /
+                    <a href="https://github.com/kerrj/rsrd">code</a>
+                    <p></p>
+                  </td>
+                </tr>
+
+                <tr onmouseout="som_stop_all()" onmouseover="som_start_all()">
                   <td style="padding:20px;width:25%;vertical-align:middle">
                     <div class="one">
                       <div class="two" id='som_image_all'>
@@ -467,16 +557,16 @@
                           <source src="images/som.mp4" type="video/mp4">
                         </video>
                       </div>
-                      <img src='images/som.jpg' width="160">
+                      <img src='images/som.jpg' id='som_image_before'  width="160">
                     </div>
                     <script type="text/javascript">
-                      function som_start() {
+                      function som_start_all() {
                         document.getElementById('som_image_all').style.opacity = "1";
                       }
-                      function som_stop() {
+                      function som_stop_all() {
                         document.getElementById('som_image_all').style.opacity = "0";
                       }
-                      som_stop()
+                      som_stop_all()
                     </script>
                   </td>
 
@@ -501,7 +591,7 @@
                     <a href="https://github.com/vye16/shape-of-motion/">code</a>
                     <p></p>
                   </td>
-                </tr>
+                </tr> 
 
                 <tr onmouseout="spatialtracker_stop_all()" onmouseover="spatialtracker_start_all()">
                   <td style="padding:20px;width:25%;vertical-align:middle">
