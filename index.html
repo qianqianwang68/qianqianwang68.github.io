@@ -42,7 +42,7 @@
     window.addEventListener('DOMContentLoaded', function() {
       let activeTab = sessionStorage.getItem('activeTab');
       if (activeTab === null) {
-        activeTab = 0; // default
+        activeTab = 1; // default
       }
       showPubs(activeTab);
     });
@@ -75,6 +75,36 @@
   height: 100%;
   object-fit: cover;  /* or 'contain' for letterboxing */
 }
+.tooltip {
+  position: relative;
+  cursor: help; /* optional: changes the cursor icon */
+}
+
+.tooltip .tooltip-text {
+  visibility: hidden;
+  width: max-content;
+  max-width: 200px;
+  background-color: #333;
+  color: #fff;
+  text-align: left;
+  border-radius: 6px;
+  padding: 5px 8px;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%; /* position it above the text */
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: opacity 0.3s;
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+.tooltip:hover .tooltip-text {
+  visibility: visible;
+  opacity: 1;
+}
+
 </style>
 
 <body>
@@ -87,7 +117,11 @@
               <tr style="padding:0px">
                 <td style="padding:2.5%;width:63%;vertical-align:middle">
                   <p style="text-align:center">
-                    <name>Qianqian Wang</name>
+                    <name>
+                      <span class="tooltip">
+                        Qianqian <span class="tooltip-text">Pronounced like “chyen-chyen”</span> </span> Wang
+                    </name>
+
                   </p>
                   I am a postdoctoral researcher at <a href="https://www.berkeley.edu/">UC Berkeley</a>, working with 
                   <a href="https://people.eecs.berkeley.edu/~kanazawa/">Prof. Angjoo Kanazawa</a> and 
@@ -102,11 +136,9 @@
                     My long-term research goal is to build intelligent systems that can perceive, understand and continually learn from the complex, ever-changing physical world.
                   </p>
                   <p>
-                    <strong>I am on the academic job market this year (2024-2025).</strong> 
+                    I'm open to collaboration. Feel free to reach out!
                   </p>
-                  <p style="font-style: italic;">
-                    (Qianqian is pronounced like "chyen-chyen")
-                  </p>
+
                   <p style="text-align:center">
                     <a href="mailto:qianqianwang@berkeley.edu">Email</a> &nbsp;/&nbsp;
                     <a href="data/qianqianwang_cv.pdf">CV</a> &nbsp;/&nbsp;
@@ -133,7 +165,7 @@
                     Publications 
                   </heading>
                   &nbsp;(<a href="javascript:showPubs(0)" id="select0">show selected</a> / 
-                  <a href="javascript:showPubs(1)" id="select1">show all by date</a>)
+                  <a href="javascript:showPubs(1)" id="select1">show all</a>)
                 </td>
               </tr>
             </tbody>
@@ -146,6 +178,50 @@
           <div id="pubs_selected" class="hidden">
             <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
               <tbody>
+                <tr onmouseout="som_stop()" onmouseover="som_start()">
+                  <td style="padding:20px;width:25%;vertical-align:middle">
+                    <div class="one">
+                      <div class="two" id='som_image'>
+                        <video width="100%" height="100%" muted autoplay loop>
+                          <source src="images/som.mp4" type="video/mp4">
+                        </video>
+                      </div>
+                      <img src='images/som.jpg' id='som_before'  width="160">
+                    </div>
+                    <script type="text/javascript">
+                      function som_start() {
+                        document.getElementById('som_image').style.opacity = "1";
+                      }
+                      function som_stop() {
+                        document.getElementById('som_image').style.opacity = "0";
+                      }
+                      som_stop()
+                    </script>
+                  </td>
+
+                  <td style="padding:20px;width:75%;vertical-align:middle">
+                    <a href="https://shape-of-motion.github.io/">
+                      <papertitle> Shape of Motion: 4D Reconstruction from a Single Video </papertitle>
+                    </a>
+                    <br>
+                    <strong>Qianqian Wang</strong>*,
+                    <a href="https://people.eecs.berkeley.edu/~vye/">Vickie Ye*</a>,
+                    <a href="https://hangg7.com/">Hang Gao*</a>,
+                    <a href="https://fantasticoven2.github.io/">Weijia Zeng*</a>,
+                    <a href="https://www.linkedin.com/in/jakeaustin4701/">Jake Austin</a>,
+                    <a href="https://zhengqili.github.io/">Zhengqi Li</a>,
+                    <a href="https://people.eecs.berkeley.edu/~kanazawa/">Angjoo Kanazawa</a>
+                    <br>
+                    <em>ICCV</em>, 2025
+                    <br>
+                    <a href="https://shape-of-motion.github.io/">project page</a>
+                    /
+                    <a href="https://arxiv.org/abs/2407.13764">arXiv</a>
+                    /
+                    <a href="https://github.com/vye16/shape-of-motion/">code</a>
+                    <p></p>
+                  </td>
+                </tr> 
                 <tr onmouseout="cuter_stop()" onmouseover="cuter_start()">
                   <td style="padding:20px;width:25%;vertical-align:middle">
                     <div class="one">
@@ -178,7 +254,7 @@
                     <a href="https://people.eecs.berkeley.edu/~efros/">Alexei A. Efros</a>,
                     <a href="https://people.eecs.berkeley.edu/~kanazawa/">Angjoo Kanazawa</a>
                     <br>
-                    <em>CVPR</em>, 2025
+                    <em>CVPR</em>, 2025 (<strong>Oral</strong>)
                     <br>
                     <a href="https://cut3r.github.io/">project page</a>
                     /
@@ -188,50 +264,6 @@
                     <p></p>
                   </td>
                 </tr>
-
-                <tr onmouseout="som_stop()" onmouseover="som_start()">
-                  <td style="padding:20px;width:25%;vertical-align:middle">
-                    <div class="one">
-                      <div class="two" id='som_image'>
-                        <video width="100%" height="100%" muted autoplay loop>
-                          <source src="images/som.mp4" type="video/mp4">
-                        </video>
-                      </div>
-                      <img src='images/som.jpg' id='som_before'  width="160">
-                    </div>
-                    <script type="text/javascript">
-                      function som_start() {
-                        document.getElementById('som_image').style.opacity = "1";
-                      }
-                      function som_stop() {
-                        document.getElementById('som_image').style.opacity = "0";
-                      }
-                      som_stop()
-                    </script>
-                  </td>
-
-                  <td style="padding:20px;width:75%;vertical-align:middle">
-                    <a href="https://shape-of-motion.github.io/">
-                      <papertitle> Shape of Motion: 4D Reconstruction from a Single Video </papertitle>
-                    </a>
-                    <br>
-                    <strong>Qianqian Wang</strong>*,
-                    <a href="https://people.eecs.berkeley.edu/~vye/">Vickie Ye*</a>,
-                    <a href="https://hangg7.com/">Hang Gao*</a>,
-                    <a href="https://www.linkedin.com/in/jakeaustin4701/">Jake Austin</a>,
-                    <a href="https://zhengqili.github.io/">Zhengqi Li</a>,
-                    <a href="https://people.eecs.berkeley.edu/~kanazawa/">Angjoo Kanazawa</a>
-                    <br>
-                    <em>arXiv</em>, 2024
-                    <br>
-                    <a href="https://shape-of-motion.github.io/">project page</a>
-                    /
-                    <a href="https://arxiv.org/abs/2407.13764">arXiv</a>
-                    /
-                    <a href="https://github.com/vye16/shape-of-motion/">code</a>
-                    <p></p>
-                  </td>
-                </tr> 
 
                 <tr onmouseout="spatialtracker_stop()" onmouseover="spatialtracker_start()">
                   <td style="padding:20px;width:25%;vertical-align:middle">
@@ -264,8 +296,8 @@
                     <a href="https://zhanghe3z.github.io/">Shangzhan Zhang</a>,
                     <a href="https://xuenan.net/">Nan Xue</a>,
                     <a href="https://pengsida.net/">Sida Peng</a>,
-                    <a href="https://shenyujun.github.io/">Yujun Shen</a><sup>†</sup>,
-                    <a href="https://xzhou.me/">Xiaowei Zhou</a><sup>†</sup>
+                    <a href="https://shenyujun.github.io/">Yujun Shen</a>,
+                    <a href="https://xzhou.me/">Xiaowei Zhou</a>
                     <br>
                     <em>CVPR</em>, 2024 (<strong>highlight</strong>)
                     <br>
@@ -546,6 +578,96 @@
           <div id="pubs_by_date" class="hidden">
             <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
               <tbody>
+
+                <tr onmouseout="som_stop_all()" onmouseover="som_start_all()">
+                  <td style="padding:20px;width:25%;vertical-align:middle">
+                    <div class="one">
+                      <div class="two" id='som_image_all'>
+                        <video width="100%" height="100%" muted autoplay loop>
+                          <source src="images/som.mp4" type="video/mp4">
+                        </video>
+                      </div>
+                      <img src='images/som.jpg' id='som_image_before'  width="160">
+                    </div>
+                    <script type="text/javascript">
+                      function som_start_all() {
+                        document.getElementById('som_image_all').style.opacity = "1";
+                      }
+                      function som_stop_all() {
+                        document.getElementById('som_image_all').style.opacity = "0";
+                      }
+                      som_stop_all()
+                    </script>
+                  </td>
+
+                  <td style="padding:20px;width:75%;vertical-align:middle">
+                    <a href="https://shape-of-motion.github.io/">
+                      <papertitle> Shape of Motion: 4D Reconstruction from a Single Video </papertitle>
+                    </a>
+                    <br>
+                    <strong>Qianqian Wang</strong>*,
+                    <a href="https://people.eecs.berkeley.edu/~vye/">Vickie Ye*</a>,
+                    <a href="https://hangg7.com/">Hang Gao*</a>,
+                    <a href="https://fantasticoven2.github.io/">Weijia Zeng*</a>,
+                    <a href="https://www.linkedin.com/in/jakeaustin4701/">Jake Austin</a>,
+                    <a href="https://zhengqili.github.io/">Zhengqi Li</a>,
+                    <a href="https://people.eecs.berkeley.edu/~kanazawa/">Angjoo Kanazawa</a>
+                    <br>
+                    <em>ICCV</em>, 2025
+                    <br>
+                    <a href="https://shape-of-motion.github.io/">project page</a>
+                    /
+                    <a href="https://arxiv.org/abs/2407.13764">arXiv</a>
+                    /
+                    <a href="https://github.com/vye16/shape-of-motion/">code</a>
+                    <p></p>
+                  </td>
+                </tr> 
+
+                <tr onmouseout="st4rtrack_stop()" onmouseover="st4rtrack_start()">
+                  <td style="padding:20px;width:25%;vertical-align:middle">
+                    <div class="one">
+                      <div class="two" id='st4rtrack_image_all'>
+                        <video width="100%" height="100%" muted autoplay loop>
+                          <source src="images/st4rtrack.mp4" type="video/mp4">
+                        </video>
+                      </div>
+                      <img src='images/st4rtrack.jpg' id='st4rtrack_image_before' width="160">
+                    </div>
+                    <script type="text/javascript">
+                      function st4rtrack_start() {
+                        document.getElementById('st4rtrack_image_all').style.opacity = "1";
+                        document.getElementById('st4rtrack_image_before').style.opacity = "0";
+                      }
+
+                      function st4rtrack_stop() {
+                        document.getElementById('st4rtrack_image_all').style.opacity = "0";
+                        document.getElementById('st4rtrack_image_before').style.opacity = "1";
+                      }
+                      st4rtrack_stop()
+                    </script>
+                  </td>
+                  <td style="padding:20px;width:75%;vertical-align:middle">
+                    <a href="https://st4rtrack.github.io/">
+                      St4RTrack: Simultaneous 4D Reconstruction and Tracking in the World
+                    </a>
+                    <br>
+                    <a href="https://havenfeng.github.io/"> Haiwen Feng*</a>,
+                    <a href="https://www.junyi42.com/">Junyi Zhang*</a>,
+                    <strong>Qianqian Wang</strong>,
+                    <a href="https://judyye.github.io/">Yufei Ye</a>,
+                    <a href="https://ps.is.mpg.de/person/pyu">Pengcheng Yu</a>,
+                    <a href="https://is.mpg.de/ps/person/black">Michael J. Black</a>,
+                    <a href="https://people.eecs.berkeley.edu/~trevor/">Trevor Darrell</a>,
+                    <a href="https://people.eecs.berkeley.edu/~kanazawa/"> Angjoo Kanazawa</a>
+                    <br>
+                    <em>ICCV</em>, 2025
+                    <br>
+                    <a href="https://st4rtrack.github.io/">project page</a> /
+                    <a href="https://arxiv.org/abs/2504.13152">arXiv</a>
+                  </td>
+                </tr>
+
                 <tr onmouseout="cuter_stop_all()" onmouseover="cuter_start_all()">
                   <td style="padding:20px;width:25%;vertical-align:middle">
                     <div class="one">
@@ -578,7 +700,7 @@
                     <a href="https://people.eecs.berkeley.edu/~efros/">Alexei A. Efros</a>,
                     <a href="https://people.eecs.berkeley.edu/~kanazawa/">Angjoo Kanazawa</a>
                     <br>
-                    <em>CVPR</em>, 2025
+                    <em>CVPR</em>, 2025 (<strong>Oral</strong>)
                     <br>
                     <a href="https://cut3r.github.io/">project page</a>
                     /
@@ -588,6 +710,100 @@
                     <p></p>
                   </td>
                 </tr>
+
+
+                <!-- megasam -->
+                <tr onmouseout="megasam_stop()" onmouseover="megasam_start()">
+                  <td style="padding:20px;width:25%;vertical-align:middle">
+                    <div class="one">
+                      <div class="two" id='megasam_image'><video  width=100% height=100% muted autoplay loop>
+                      <source src="images/megasam.mp4" type="video/mp4">
+                      Your browser does not support the video tag.
+                      </video></div>
+                      <img src='images/megasam.png' width="160">
+                    </div>
+                    <script type="text/javascript">
+                      function megasam_start() {
+                        document.getElementById('megasam_image').style.opacity = "1";
+                      }
+          
+                      function megasam_stop() {
+                        document.getElementById('megasam_image').style.opacity = "0";
+                      }
+                      megasam_stop()
+                    </script>
+                  </td>
+                  <td style="padding:20px;width:75%;vertical-align:middle">
+                      <a href="https://mega-sam.github.io/">
+                      <span class="papertitle"> MegaSaM: Accurate, Fast and Robust Structure and Motion from Casual Dynamic Videos</span>
+                      </a>
+                      <br>
+                      <a href="https://zhengqili.github.io/">Zhengqi Li</a>, 
+                      <a href="https://scholar.google.com/citations?user=IkpNZAoAAAAJ&hl=en">Richard Tucker</a>, 
+                      <a href="https://research.google/people/forrestercole/">Forrester Cole</a>, 
+                      <strong>Qianqian Wang</strong>,
+                      <a href="https://jinlinyi.github.io/">Linyi Jin</a>, 
+                      <a href="https://people.eecs.berkeley.edu/~vye/">Vickie Ye</a>,
+                      <a href="https://people.eecs.berkeley.edu/~kanazawa/">Angjoo Kanazawa</a>,
+                      <a href="https://holynski.org/">Aleksander Hołyński</a>,
+                      <a href="https://www.cs.cornell.edu/~snavely/">Noah Snavely</a>
+                      <br>
+                      <em>CVPR</em> 2025 (<strong>Best Paper Honorable Mention</strong>)
+                      <br>
+                      
+                      <a href="https://mega-sam.github.io">project page</a>
+                      /
+                      <a href="https://arxiv.org/abs/2412.04463">arXiv</a>
+                      /
+                      <a href="https://github.com/mega-sam/mega-sam">code</a>
+                  </td>
+                </tr>
+
+                <tr onmouseout="segmo_stop()" onmouseover="segmo_start()">
+                  <td style="padding:20px;width:25%;vertical-align:middle">
+                    <div class="one">
+                      <div class="two" id='segmo_image'><video  width=100% height=100% muted autoplay loop>
+                      <source src="images/segmo.mp4" type="video/mp4">
+                      Your browser does not support the video tag.
+                      </video></div>
+                      <img src='images/segmo.jpg' width="160">
+                    </div>
+                    <script type="text/javascript">
+                      function segmo_start() {
+                        document.getElementById('segmo_image').style.opacity = "1";
+                      }
+          
+                      function segmo_stop() {
+                        document.getElementById('segmo_image').style.opacity = "0";
+                      }
+                      segmo_stop()
+                    </script>
+                  </td>
+                  <td style="padding:20px;width:75%;vertical-align:middle">
+                      <a href="https://motion-seg.github.io/">
+                      <span class="papertitle">Segment Any Motion in Videos</span>
+                      </a>
+                      <br>
+                      <a href="https://github.com/nnanhuang">Nan Huang</a>, 
+                      <a href="https://wzzheng.net/">Wenzhao Zheng</a>, 
+                      <a href="https://www.chenfengx.com/">Chenfeng Xu</a>, 
+                      <a href="https://people.eecs.berkeley.edu/~keutzer/">Kurt Keutzer</a>,
+                      <a href="https://www.shanghangzhang.com/">Shanghang Zhang</a>,
+                      <a href="https://people.eecs.berkeley.edu/~kanazawa/">Angjoo Kanazawa</a>,
+                      <strong>Qianqian Wang</strong>
+                      <br>
+                      <em>CVPR</em> 2025 
+                      <br>
+                      
+                      <a href="https://motion-seg.github.io/">project page</a>
+                      /
+                      <a href="https://arxiv.org/abs/2503.22268">arXiv</a>
+                      /
+                      <a href="https://github.com/nnanhuang/SegAnyMo">code</a>
+                  </td>
+                </tr>
+
+
 
                 <tr onmouseout="rsrd_stop()" onmouseover="rsrd_start()">
                   <td style="padding:20px;width:25%;vertical-align:middle">
@@ -634,50 +850,6 @@
                   </td>
                 </tr>
 
-                <tr onmouseout="som_stop_all()" onmouseover="som_start_all()">
-                  <td style="padding:20px;width:25%;vertical-align:middle">
-                    <div class="one">
-                      <div class="two" id='som_image_all'>
-                        <video width="100%" height="100%" muted autoplay loop>
-                          <source src="images/som.mp4" type="video/mp4">
-                        </video>
-                      </div>
-                      <img src='images/som.jpg' id='som_image_before'  width="160">
-                    </div>
-                    <script type="text/javascript">
-                      function som_start_all() {
-                        document.getElementById('som_image_all').style.opacity = "1";
-                      }
-                      function som_stop_all() {
-                        document.getElementById('som_image_all').style.opacity = "0";
-                      }
-                      som_stop_all()
-                    </script>
-                  </td>
-
-                  <td style="padding:20px;width:75%;vertical-align:middle">
-                    <a href="https://shape-of-motion.github.io/">
-                      <papertitle> Shape of Motion: 4D Reconstruction from a Single Video </papertitle>
-                    </a>
-                    <br>
-                    <strong>Qianqian Wang</strong>*,
-                    <a href="https://people.eecs.berkeley.edu/~vye/">Vickie Ye*</a>,
-                    <a href="https://hangg7.com/">Hang Gao*</a>,
-                    <a href="https://www.linkedin.com/in/jakeaustin4701/">Jake Austin</a>,
-                    <a href="https://zhengqili.github.io/">Zhengqi Li</a>,
-                    <a href="https://people.eecs.berkeley.edu/~kanazawa/">Angjoo Kanazawa</a>
-                    <br>
-                    <em>arXiv</em>, 2024
-                    <br>
-                    <a href="https://shape-of-motion.github.io/">project page</a>
-                    /
-                    <a href="https://arxiv.org/abs/2407.13764">arXiv</a>
-                    /
-                    <a href="https://github.com/vye16/shape-of-motion/">code</a>
-                    <p></p>
-                  </td>
-                </tr> 
-
                 <tr onmouseout="spatialtracker_stop_all()" onmouseover="spatialtracker_start_all()">
                   <td style="padding:20px;width:25%;vertical-align:middle">
                     <div class="one">
@@ -709,8 +881,8 @@
                     <a href="https://zhanghe3z.github.io/">Shangzhan Zhang</a>,
                     <a href="https://xuenan.net/">Nan Xue</a>,
                     <a href="https://pengsida.net/">Sida Peng</a>,
-                    <a href="https://shenyujun.github.io/">Yujun Shen</a><sup>†</sup>,
-                    <a href="https://xzhou.me/">Xiaowei Zhou</a><sup>†</sup>
+                    <a href="https://shenyujun.github.io/">Yujun Shen</a>,
+                    <a href="https://xzhou.me/">Xiaowei Zhou</a>
                     <br>
                     <em>CVPR</em>, 2024 (<strong>highlight</strong>)
                     <br>
