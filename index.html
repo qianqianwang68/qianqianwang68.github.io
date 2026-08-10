@@ -8,7 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   
   <link rel="stylesheet" type="text/css" href="stylesheet.css">
-  <link rel="icon" href="images/icon.png" type="image/svg+xml">
+  <link rel="icon" href="images/Harvard_icon.svg" type="image/svg+xml">
 </head>
 
 <style>
@@ -27,11 +27,15 @@
         document.getElementById('pubs_by_date').classList.add('hidden');
         document.getElementById('select0').style = 'text-decoration:underline;';
         document.getElementById('select1').style = '';
+        document.getElementById('select0').setAttribute('aria-pressed', 'true');
+        document.getElementById('select1').setAttribute('aria-pressed', 'false');
       } else {
         document.getElementById('pubs_selected').classList.add('hidden');
         document.getElementById('pubs_by_date').classList.remove('hidden');
         document.getElementById('select1').style = 'text-decoration:underline;';
         document.getElementById('select0').style = '';
+        document.getElementById('select1').setAttribute('aria-pressed', 'true');
+        document.getElementById('select0').setAttribute('aria-pressed', 'false');
       }
 
       // Save user’s choice
@@ -75,34 +79,153 @@
   height: 100%;
   object-fit: cover;  /* or 'contain' for letterboxing */
 }
-.tooltip {
-  position: relative;
-  cursor: help; /* optional: changes the cursor icon */
+.intro {
+  display: grid;
+  grid-template-columns: 185px minmax(0, 1fr);
+  column-gap: 34px;
+  row-gap: 26px;
+  align-items: start;
+  padding: 30px 20px 24px;
 }
 
-.tooltip .tooltip-text {
-  visibility: hidden;
-  width: max-content;
-  max-width: 200px;
-  background-color: #333;
-  color: #fff;
-  text-align: left;
+.intro-heading {
+  grid-column: 1 / -1;
+}
+
+.intro-photo {
+  display: block;
+  width: 90%;
+  margin: 6px 0 0;
   border-radius: 6px;
-  padding: 5px 8px;
-  position: absolute;
-  z-index: 1;
-  bottom: 125%; /* position it above the text */
-  left: 50%;
-  transform: translateX(-50%);
-  opacity: 0;
-  transition: opacity 0.3s;
+}
+
+.intro-heading h1 {
+  margin: 0 0 5px;
+  color: #222;
+  font-family: 'Lato', Verdana, Helvetica, sans-serif;
+  font-size: 32px;
+  font-weight: 400;
+  line-height: 1.15;
+}
+
+.photo-caption {
+  width: 90%;
+  margin: 9px 0 0;
+  color: #555b62;
   font-size: 13px;
+  text-align: center;
   white-space: nowrap;
 }
 
-.tooltip:hover .tooltip-text {
-  visibility: visible;
-  opacity: 1;
+.photo-caption .phonetic {
+  font-style: italic;
+}
+
+.intro-role {
+  margin: 0;
+  color: #555b62;
+  font-size: 16px;
+}
+
+.intro-content > p:not(.intro-role):not(.intro-links) {
+  line-height: 1.55;
+}
+
+.intro-content > p:first-child {
+  margin-top: 0;
+}
+
+.intro-links {
+  margin: 20px 0 0;
+}
+
+.section-heading {
+  display: inline;
+  margin: 0;
+  font-family: 'Lato', Verdana, Helvetica, sans-serif;
+  font-size: 22px;
+  font-weight: 400;
+}
+
+.research-heading-cell {
+  padding: 20px 20px 8px !important;
+}
+
+.pub-toggle {
+  appearance: none;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: #1772d0;
+  cursor: pointer;
+  font: inherit;
+}
+
+.pub-toggle:hover,
+.pub-toggle:focus-visible {
+  color: #f09228;
+}
+
+@media (max-width: 620px) {
+  .intro {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+
+  .intro-sidebar {
+    width: min(210px, 68vw);
+    margin: 0 auto;
+  }
+
+  .intro-photo {
+    margin: 0 auto;
+  }
+
+  .photo-caption {
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  .intro-heading h1,
+  .intro-role,
+  .intro-links {
+    text-align: center;
+  }
+
+  #pubs_selected table,
+  #pubs_selected tbody,
+  #pubs_selected tr,
+  #pubs_selected td,
+  #pubs_by_date table,
+  #pubs_by_date tbody,
+  #pubs_by_date tr,
+  #pubs_by_date td {
+    display: block;
+    width: 100% !important;
+    box-sizing: border-box;
+  }
+
+  #pubs_selected td,
+  #pubs_by_date td {
+    padding: 10px 20px !important;
+  }
+
+  #pubs_selected td:first-child,
+  #pubs_by_date td:first-child {
+    padding-top: 18px !important;
+    text-align: center;
+  }
+
+  #pubs_selected .one,
+  #pubs_by_date .one {
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  #pubs_selected td:last-child,
+  #pubs_by_date td:last-child {
+    padding-bottom: 20px !important;
+  }
 }
 
 </style>
@@ -112,60 +235,54 @@
     <tbody>
       <tr style="padding:0px">
         <td style="padding:0px">
-          <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
-            <tbody>
-              <tr style="padding:0px">
-                <td style="padding:2.5%;width:63%;vertical-align:middle">
-                  <p style="text-align:center">
-                    <name>
-                      <span class="tooltip">
-                        Qianqian <span class="tooltip-text">Pronounced like “chyen-chyen”</span> </span> Wang
-                    </name>
+          <section class="intro">
+            <header class="intro-heading">
+              <h1>Qianqian Wang</h1>
+              <p class="intro-role">Assistant Professor · Harvard SEAS &amp; Kempner Institute</p>
+            </header>
 
-                  </p>
-                  I am an incoming Assistant Professor at <a href="https://seas.harvard.edu/">Harvard University</a> 
-                  and the <a href="https://kempnerinstitute.harvard.edu/">Kempner Institute</a> (Fall 2026), 
-                  and currently a Member of Technical Staff at <a href="https://www.rhoda.ai/">Rhoda AI</a>. 
-                  Prior to this, I was a postdoctoral researcher at <a href="https://www.berkeley.edu/">UC Berkeley</a> with
-                   <a href="https://people.eecs.berkeley.edu/~kanazawa/">Prof. Angjoo Kanazawa</a> and <a href="https://people.eecs.berkeley.edu/~efros/">Prof. Alexei A. Efros</a>. 
-                   I received my PhD in Computer Science from <a href="https://tech.cornell.edu/">Cornell Tech</a>, <a href="https://www.cornell.edu/">Cornell University</a>, 
-                   advised by <a href="http://www.cs.cornell.edu/~snavely/">Prof. Noah Snavely</a> and <a href="http://home.bharathh.info/">Prof. Bharath Hariharan</a>.
-                  <p>
-                    My research focuses on understanding and modeling the dynamic 3D world from everyday images and videos.
-                    My long-term goal is to build intelligent systems that can perceive, understand and continually learn from the ever-changing physical world.
-                    Recently, I have become interested in active perception, long-context vision modeling, and visual reasoning in support of this goal.
+            <aside class="intro-sidebar">
+              <a href="images/QianqianWang.jpg">
+                <img class="intro-photo hoverZoomLink" alt="Qianqian Wang" src="images/QianqianWang.jpg">
+              </a>
+              <p class="photo-caption">Qianqian <span class="phonetic">(“chyen-chyen”)</span></p>
+            </aside>
+
+            <div class="intro-content">
+                  <p>I am an Assistant Professor of Computer Science at <a href="https://seas.harvard.edu/">Harvard University</a>
+                  and the <a href="https://kempnerinstitute.harvard.edu/">Kempner Institute</a>.
+                  My research interests lie at the intersection of computer vision, machine learning, and robotics.
+                  My long-term goal is to build intelligent systems that can perceive, understand, and continually learn from the physical world.
                   </p>
                   <p>
-                    I will be recruiting PhD students in the December 2025 application cycle! I will also be looking for motivated research interns and postdocs to join my group.
+                    Before joining Harvard, I was a Research Scientist at <a href="https://www.rhoda.ai/">Rhoda AI</a>, following a postdoc at <a href="https://www.berkeley.edu/">UC Berkeley</a> with
+                    <a href="https://people.eecs.berkeley.edu/~kanazawa/">Angjoo Kanazawa</a> and <a href="https://people.eecs.berkeley.edu/~efros/">Alexei A. Efros</a>.
+                    I received my PhD in Computer Science from <a href="https://tech.cornell.edu/">Cornell Tech</a>, <a href="https://www.cornell.edu/">Cornell University</a>,
+                    advised by <a href="http://www.cs.cornell.edu/~snavely/">Noah Snavely</a> and <a href="http://home.bharathh.info/">Bharath Hariharan</a>.
+                    My work has been recognized with the ICCV 2023 Best Student Paper Award and CVPR Best Paper Honorable Mentions in 2023 and 2025.
+                  </p>
+                  <p>
+                    I am recruiting PhD students in the December 2026 application cycle and am also looking for motivated research interns and postdocs to join my group.
                   </p>
 
-                  <p style="text-align:center">
+                  <p class="intro-links">
                     <a href="mailto:qwang@seas.harvard.edu">Email</a> &nbsp;/&nbsp;
                     <a href="data/qianqianwang_cv.pdf">CV</a> &nbsp;/&nbsp;
                     <a href="https://scholar.google.com/citations?user=VdmfIeUAAAAJ&hl=en">Google Scholar</a> &nbsp;/&nbsp;
                     <a href="https://twitter.com/QianqianWang5">Twitter</a> &nbsp;/&nbsp;
-                    <a href="https://github.com/qianqianwang68">Github</a>
+                    <a href="https://github.com/qianqianwang68">GitHub</a>
                   </p>
-                </td>
-                <td style="padding:2.5%;width:25%;max-width:25%">
-                  <a href="images/QianqianWang.jpg">
-                    <img style="width:100%;max-width:100%" alt="profile photo" src="images/QianqianWang.jpg" class="hoverZoomLink">
-                  </a>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+            </div>
+          </section>
 
           <!-- Publications heading with two buttons -->
           <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
             <tbody>
               <tr>
-                <td style="padding:20px;width:100%;vertical-align:middle">
-                  <heading>
-                    Publications 
-                  </heading>
-                  &nbsp;(<a href="javascript:showPubs(0)" id="select0">show selected</a> / 
-                  <a href="javascript:showPubs(1)" id="select1">show all</a>)
+                <td class="research-heading-cell" style="padding:20px;width:100%;vertical-align:middle">
+                  <h2 class="section-heading">Research</h2>
+                  &nbsp;(<button type="button" class="pub-toggle" id="select0" aria-pressed="false" onclick="showPubs(0)">show selected</button> /
+                  <button type="button" class="pub-toggle" id="select1" aria-pressed="false" onclick="showPubs(1)">show all</button>)
                 </td>
               </tr>
             </tbody>
