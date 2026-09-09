@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>Qianqian Wang</title>
+  <title>Qianqian (Quinn) Wang</title>
   
-  <meta name="author" content="Qianqian Wang">
+  <meta name="author" content="Qianqian (Quinn) Wang">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   
   <link rel="stylesheet" type="text/css" href="stylesheet.css">
@@ -42,6 +42,20 @@
       sessionStorage.setItem('activeTab', id);
     }
 
+    function toggleNameNote(button) {
+      const note = document.getElementById('name-note');
+      const isOpen = button.getAttribute('aria-expanded') === 'true';
+      button.setAttribute('aria-expanded', String(!isOpen));
+      note.hidden = isOpen;
+    }
+
+    function closeNameNote() {
+      const button = document.querySelector('.name-help');
+      const note = document.getElementById('name-note');
+      button.setAttribute('aria-expanded', 'false');
+      note.hidden = true;
+    }
+
     // On page load, restore the previously active tab (or default to 0)
     window.addEventListener('DOMContentLoaded', function() {
       let activeTab = sessionStorage.getItem('activeTab');
@@ -49,6 +63,18 @@
         activeTab = 1; // default
       }
       showPubs(activeTab);
+
+      document.addEventListener('click', function(event) {
+        if (!event.target.closest('.name-detail')) {
+          closeNameNote();
+        }
+      });
+
+      document.addEventListener('keydown', function(event) {
+        if (event.key === 'Escape') {
+          closeNameNote();
+        }
+      });
     });
   </script>
 
@@ -108,17 +134,65 @@
   line-height: 1.15;
 }
 
-.photo-caption {
-  width: 90%;
-  margin: 9px 0 0;
-  color: #555b62;
-  font-size: 13px;
-  text-align: center;
-  white-space: nowrap;
+.name-detail {
+  position: relative;
+  display: inline-block;
 }
 
-.photo-caption .phonetic {
-  font-style: italic;
+.name-help {
+  appearance: none;
+  display: inline-grid;
+  width: 13px;
+  height: 13px;
+  margin: 0 3px 0 2px;
+  padding: 0;
+  transform: translateY(-18px);
+  place-items: center;
+  border: 1px solid #9aa0a8;
+  border-radius: 50%;
+  background: #fff;
+  color: #737a83;
+  cursor: help;
+  font-family: 'Lato', Verdana, Helvetica, sans-serif;
+  font-size: 8px;
+  font-weight: 700;
+  line-height: 1;
+  transition: border-color 0.15s ease, color 0.15s ease, background-color 0.15s ease;
+}
+
+.name-help:hover,
+.name-help:focus-visible {
+  border-color: #1772d0;
+  background: #f4f8fd;
+  color: #1772d0;
+}
+
+.name-note {
+  position: absolute;
+  z-index: 10;
+  top: calc(100% + 7px);
+  left: 0;
+  width: max-content;
+  max-width: min(355px, calc(100vw - 48px));
+  box-sizing: border-box;
+  padding: 10px 12px;
+  border: 1px solid #d9dde2;
+  border-radius: 7px;
+  background: #fff;
+  box-shadow: 0 6px 20px rgba(22, 31, 45, 0.13);
+  color: #4f565e;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.45;
+  text-align: left;
+}
+
+.name-note[hidden] {
+  display: none;
+}
+
+.name-detail:hover .name-note {
+  display: block;
 }
 
 .intro-role {
@@ -181,11 +255,6 @@
     margin: 0 auto;
   }
 
-  .photo-caption {
-    margin-right: auto;
-    margin-left: auto;
-  }
-
   .intro-heading h1,
   .intro-role,
   .intro-links {
@@ -237,15 +306,14 @@
         <td style="padding:0px">
           <section class="intro">
             <header class="intro-heading">
-              <h1>Qianqian Wang</h1>
+              <h1>Qianqian (Quinn)<span class="name-detail"><button type="button" class="name-help" aria-label="About the names Qianqian and Quinn" aria-expanded="false" aria-controls="name-note" onclick="toggleNameNote(this)">?</button><span class="name-note" id="name-note" role="note" hidden>I go by Quinn these days. “Qianqian” is pronounced “chyen-chyen.”</span></span> Wang</h1>
               <p class="intro-role">Assistant Professor · Harvard SEAS &amp; Kempner Institute</p>
             </header>
 
             <aside class="intro-sidebar">
               <a href="images/QianqianWang.jpg">
-                <img class="intro-photo hoverZoomLink" alt="Qianqian Wang" src="images/QianqianWang.jpg">
+                <img class="intro-photo hoverZoomLink" alt="Qianqian (Quinn) Wang" src="images/QianqianWang.jpg">
               </a>
-              <p class="photo-caption">Qianqian <span class="phonetic">(“chyen-chyen”)</span></p>
             </aside>
 
             <div class="intro-content">
