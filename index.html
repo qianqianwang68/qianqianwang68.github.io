@@ -21,6 +21,7 @@
   <script>
     function showPubs(id) {
       // id=0 => "Selected"; id=1 => "All"
+      document.querySelectorAll('.paper-preview').forEach(stopPaperPreview);
 
       if (id == 0) {
         document.getElementById('pubs_selected').classList.remove('hidden');
@@ -42,27 +43,97 @@
       sessionStorage.setItem('activeTab', id);
     }
 
-    function toggleNameNote(button) {
+    let nameNotePinned = false;
+
+    function setNameNoteOpen(isOpen) {
+      const button = document.querySelector('.name-help');
       const note = document.getElementById('name-note');
-      const isOpen = button.getAttribute('aria-expanded') === 'true';
-      button.setAttribute('aria-expanded', String(!isOpen));
-      note.hidden = isOpen;
+      button.setAttribute('aria-expanded', String(isOpen));
+      note.hidden = !isOpen;
+    }
+
+    function toggleNameNote() {
+      nameNotePinned = !nameNotePinned;
+      setNameNoteOpen(nameNotePinned);
     }
 
     function closeNameNote() {
-      const button = document.querySelector('.name-help');
-      const note = document.getElementById('name-note');
-      button.setAttribute('aria-expanded', 'false');
-      note.hidden = true;
+      nameNotePinned = false;
+      setNameNoteOpen(false);
     }
 
-    // On page load, restore the previously active tab (or default to 0)
+    function initNameNote() {
+      const detail = document.querySelector('.name-detail');
+      const button = document.querySelector('.name-help');
+      detail.addEventListener('pointerenter', function(event) {
+        if (event.pointerType === 'mouse') setNameNoteOpen(true);
+      });
+      detail.addEventListener('pointerleave', function() {
+        if (!nameNotePinned && !button.matches(':focus-visible')) setNameNoteOpen(false);
+      });
+      button.addEventListener('focus', function() {
+        if (button.matches(':focus-visible')) setNameNoteOpen(true);
+      });
+      button.addEventListener('blur', function() {
+        if (!nameNotePinned && !detail.matches(':hover')) setNameNoteOpen(false);
+      });
+    }
+
+    function stopPaperPreview(preview) {
+      const video = preview.querySelector('.paper-preview-video');
+      preview.classList.remove('is-playing');
+      video.pause();
+      if (video.readyState >= 1) video.currentTime = 0;
+    }
+
+    function initPaperPreviews() {
+      document.querySelectorAll('.paper-preview').forEach(function(preview) {
+        const video = preview.querySelector('.paper-preview-video');
+        const row = preview.closest('tr');
+
+        function showVideoWhenReady() {
+          if (row.matches(':hover') && !document.hidden && !video.paused) {
+            preview.classList.add('is-playing');
+          }
+        }
+
+        function startPreview() {
+          preview.classList.remove('is-playing');
+          const playPromise = video.play();
+          if (playPromise) {
+            playPromise.catch(function() {
+              preview.classList.remove('is-playing');
+            });
+          }
+        }
+
+        row.addEventListener('mouseenter', startPreview);
+        row.addEventListener('mouseleave', function() {
+          stopPaperPreview(preview);
+        });
+        video.addEventListener('playing', showVideoWhenReady);
+        video.addEventListener('waiting', function() {
+          preview.classList.remove('is-playing');
+        });
+        video.addEventListener('error', function() {
+          preview.classList.remove('is-playing');
+        });
+      });
+    }
+
+    // On page load, restore the previously active tab (or default to All).
     window.addEventListener('DOMContentLoaded', function() {
       let activeTab = sessionStorage.getItem('activeTab');
       if (activeTab === null) {
         activeTab = 1; // default
       }
       showPubs(activeTab);
+      initPaperPreviews();
+      initNameNote();
+
+      document.addEventListener('visibilitychange', function() {
+        if (document.hidden) document.querySelectorAll('.paper-preview').forEach(stopPaperPreview);
+      });
 
       document.addEventListener('click', function(event) {
         if (!event.target.closest('.name-detail')) {
@@ -105,6 +176,53 @@
   height: 100%;
   object-fit: cover;  /* or 'contain' for letterboxing */
 }
+
+.paper-preview {
+  position: relative;
+  width: 160px;
+  height: 160px;
+  overflow: hidden;
+  background: #fff;
+}
+
+.paper-preview-poster,
+.paper-preview-video {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.paper-preview-video {
+  z-index: 1;
+  opacity: 0;
+  pointer-events: none;
+  background: #fff;
+  transition: opacity 0.12s ease-in-out;
+}
+
+.paper-preview.is-playing .paper-preview-video {
+  opacity: 1;
+}
+
+.paper-static-preview {
+  display: block;
+  width: 160px;
+  height: 160px;
+  object-fit: contain;
+  background: #fff;
+}
+
+.author-marker {
+  position: relative;
+  top: -0.35em;
+  font-size: 0.7em;
+  line-height: 0;
+  vertical-align: baseline;
+}
+
 .intro {
   display: grid;
   grid-template-columns: 185px minmax(0, 1fr);
@@ -126,6 +244,7 @@
 }
 
 .intro-heading h1 {
+  position: relative;
   margin: 0 0 5px;
   color: #222;
   font-family: 'Lato', Verdana, Helvetica, sans-serif;
@@ -135,7 +254,6 @@
 }
 
 .name-detail {
-  position: relative;
   display: inline-block;
 }
 
@@ -173,7 +291,7 @@
   top: calc(100% + 7px);
   left: 0;
   width: max-content;
-  max-width: min(355px, calc(100vw - 48px));
+  max-width: min(355px, 100%);
   box-sizing: border-box;
   padding: 10px 12px;
   border: 1px solid #d9dde2;
@@ -189,10 +307,6 @@
 
 .name-note[hidden] {
   display: none;
-}
-
-.name-detail:hover .name-note {
-  display: block;
 }
 
 .intro-role {
@@ -359,10 +473,68 @@
           <!-- This is where publications will be dynamically inserted -->
           <div id="pubs"></div>
 
-          <!-- Hidden container: first two publications only (show selected) -->
+          <!-- Hidden container: selected publications -->
           <div id="pubs_selected" class="hidden">
             <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
               <tbody>
+                <tr>
+                  <td style="padding:20px;width:25%;vertical-align:middle">
+                    <div class="one paper-preview">
+                      <img class="paper-preview-poster" src="images/mose3.webp?v=20261106-05" alt="MoSE3 project preview" width="160" height="160">
+                      <video class="paper-preview-video" width="160" height="160" muted loop playsinline preload="metadata" aria-hidden="true">
+                        <source src="images/mose3.mp4?v=20261106-05" type="video/mp4">
+                      </video>
+                    </div>
+                  </td>
+                  <td style="padding:20px;width:75%;vertical-align:middle">
+                    <a href="https://mose3-tracker.github.io/">
+                      <papertitle>MoSE3: Learning World-Space SE(3) at Every Pixel</papertitle>
+                    </a>
+                    <br>
+                    <a href="https://joannaccjh.github.io/">Jiahuan Cheng*</a>,
+                    <a href="https://sky-lzy.github.io/">Zhiyi Li*</a>,
+                    <a href="https://tianx-ia.github.io/">Tian Xia*</a>,
+                    <a href="https://ruojincai.github.io/">Ruojin Cai</a>,
+                    <a href="https://yilundu.github.io/">Yilun Du</a>,
+                    <strong>Qianqian Wang</strong>
+                    <br>
+                    <em>NeurIPS</em>, 2026 (<strong>Spotlight</strong>)
+                    <br>
+                    <a href="https://mose3-tracker.github.io/">project page</a> /
+                    <a href="https://arxiv.org/abs/2610.03716">arXiv</a> /
+                    <a href="https://github.com/mose3-tracker/MoSE3">code</a>
+                    <p></p>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td style="padding:20px;width:25%;vertical-align:middle">
+                    <div class="one paper-preview">
+                      <img class="paper-preview-poster" src="images/world_motion_models.jpg?v=20261106-six-panels" alt="World Motion Models project preview" width="160" height="160">
+                      <video class="paper-preview-video" width="160" height="160" muted loop playsinline preload="metadata" aria-hidden="true">
+                        <source src="images/world_motion_models.mp4?v=20261106-six-panels" type="video/mp4">
+                      </video>
+                    </div>
+                  </td>
+                  <td style="padding:20px;width:75%;vertical-align:middle">
+                    <a href="https://jiahuilei.com/projects/wmm/">
+                      <papertitle>World Motion Models: Flexible Sequence Modeling of SE(3) Trajectories</papertitle>
+                    </a>
+                    <br>
+                    <a href="https://jiahuilei.com/">Jiahui Lei</a>,
+                    <strong>Qianqian Wang</strong>,
+                    <a href="https://people.eecs.berkeley.edu/~trevor/">Trevor Darrell</a>,
+                    <a href="https://people.eecs.berkeley.edu/~kanazawa/">Angjoo Kanazawa</a>
+                    <br>
+                    <em>NeurIPS</em>, 2026 (<strong>Spotlight</strong>)
+                    <br>
+                    <a href="https://jiahuilei.com/projects/wmm/">project page</a> /
+                    <a href="https://arxiv.org/abs/2610.01742">arXiv</a> /
+                    <a href="https://github.com/JiahuiLei/WorldMotionModels">code</a>
+                    <p></p>
+                  </td>
+                </tr>
+
                 <tr onmouseout="som_stop()" onmouseover="som_start()">
                   <td style="padding:20px;width:25%;vertical-align:middle">
                     <div class="one">
@@ -415,7 +587,7 @@
                           <source src="images/cut3r.mp4" type="video/mp4">
                         </video>
                       </div>
-                      <img src='images/cut3r.jpg' id='cuter_before'  width="160" >
+                      <img src='images/cut3r.jpg' id='cuter_before_selected'  width="160" >
                     </div>
                     <script type="text/javascript">
                       function cuter_start() {
@@ -503,7 +675,7 @@
                           <source src="images/dift.mp4" type="video/mp4">
                         </video>
                       </div>
-                      <img src='images/dift.png' id='dift_before' width="160">
+                      <img src='images/dift.png' id='dift_before_selected' width="160">
                     </div>
                     <script type="text/javascript">
                       function dift_start_all() {
@@ -543,7 +715,7 @@
                           <source src="images/omnimotion.mp4" type="video/mp4">
                         </video>
                       </div>
-                      <img src='images/omnimotion.jpg' id='omnimotion_before' width="160">
+                      <img src='images/omnimotion.jpg' id='omnimotion_before_selected' width="160">
                     </div>
                     <script type="text/javascript">
                       function omnimotion_start_all() {
@@ -585,7 +757,7 @@
                           <source src="images/dynibar.mp4" type="video/mp4">
                         </video>
                       </div>
-                      <img src='images/dynibar.jpg' id='dynibar_before' width="160">
+                      <img src='images/dynibar.jpg' id='dynibar_before_selected' width="160">
                     </div>
                     <script type="text/javascript">
                       function dynibar_start_all() {
@@ -636,7 +808,7 @@
                         document.getElementById('3d_moments_image_all').style.opacity = "0";
                         document.getElementById('3d_moments_before_all').style.opacity = "1";
                       }
-                      three_d_moments_stop()
+                      three_d_moments_stop_all()
                     </script>
                   </td>
                   <td style="padding:20px;width:75%;vertical-align:middle">
@@ -763,6 +935,154 @@
           <div id="pubs_by_date" class="hidden">
             <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
               <tbody>
+
+                <tr>
+                  <td style="padding:20px;width:25%;vertical-align:middle">
+                    <div class="one paper-preview">
+                      <img class="paper-preview-poster" src="images/mose3.webp?v=20261106-05" alt="MoSE3 project preview" width="160" height="160">
+                      <video class="paper-preview-video" width="160" height="160" muted loop playsinline preload="metadata" aria-hidden="true">
+                        <source src="images/mose3.mp4?v=20261106-05" type="video/mp4">
+                      </video>
+                    </div>
+                  </td>
+                  <td style="padding:20px;width:75%;vertical-align:middle">
+                    <a href="https://mose3-tracker.github.io/">
+                      <papertitle>MoSE3: Learning World-Space SE(3) at Every Pixel</papertitle>
+                    </a>
+                    <br>
+                    <a href="https://joannaccjh.github.io/">Jiahuan Cheng*</a>,
+                    <a href="https://sky-lzy.github.io/">Zhiyi Li*</a>,
+                    <a href="https://tianx-ia.github.io/">Tian Xia*</a>,
+                    <a href="https://ruojincai.github.io/">Ruojin Cai</a>,
+                    <a href="https://yilundu.github.io/">Yilun Du</a>,
+                    <strong>Qianqian Wang</strong>
+                    <br>
+                    <em>NeurIPS</em>, 2026 (<strong>Spotlight</strong>)
+                    <br>
+                    <a href="https://mose3-tracker.github.io/">project page</a> /
+                    <a href="https://arxiv.org/abs/2610.03716">arXiv</a> /
+                    <a href="https://github.com/mose3-tracker/MoSE3">code</a>
+                    <p></p>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td style="padding:20px;width:25%;vertical-align:middle">
+                    <div class="one paper-preview">
+                      <img class="paper-preview-poster" src="images/world_motion_models.jpg?v=20261106-six-panels" alt="World Motion Models project preview" width="160" height="160">
+                      <video class="paper-preview-video" width="160" height="160" muted loop playsinline preload="metadata" aria-hidden="true">
+                        <source src="images/world_motion_models.mp4?v=20261106-six-panels" type="video/mp4">
+                      </video>
+                    </div>
+                  </td>
+                  <td style="padding:20px;width:75%;vertical-align:middle">
+                    <a href="https://jiahuilei.com/projects/wmm/">
+                      <papertitle>World Motion Models: Flexible Sequence Modeling of SE(3) Trajectories</papertitle>
+                    </a>
+                    <br>
+                    <a href="https://jiahuilei.com/">Jiahui Lei</a>,
+                    <strong>Qianqian Wang</strong>,
+                    <a href="https://people.eecs.berkeley.edu/~trevor/">Trevor Darrell</a>,
+                    <a href="https://people.eecs.berkeley.edu/~kanazawa/">Angjoo Kanazawa</a>
+                    <br>
+                    <em>NeurIPS</em>, 2026 (<strong>Spotlight</strong>)
+                    <br>
+                    <a href="https://jiahuilei.com/projects/wmm/">project page</a> /
+                    <a href="https://arxiv.org/abs/2610.01742">arXiv</a> /
+                    <a href="https://github.com/JiahuiLei/WorldMotionModels">code</a>
+                    <p></p>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td style="padding:20px;width:25%;vertical-align:middle">
+                    <div class="one">
+                      <img class="paper-static-preview" src="images/robust_vggt.jpg?v=20261106" alt="RobustVGGT outlier view rejection and 3D reconstruction results" width="160" height="160">
+                    </div>
+                  </td>
+                  <td style="padding:20px;width:75%;vertical-align:middle">
+                    <a href="https://cvlab-kaist.github.io/RobustVGGT/">
+                      <papertitle>Emergent Outlier View Rejection in Visual Geometry Grounded Transformers</papertitle>
+                    </a>
+                    <br>
+                    <a href="https://onground-korea.github.io/">Jisang Han*</a>,
+                    <a href="https://sunghwanhong.github.io/">Sunghwan Hong*</a>,
+                    <a href="https://crepejung00.github.io/">Jaewoo Jung</a>,
+                    <a href="https://scholar.google.com/citations?hl=ko&amp;user=7cyLEQ0AAAAJ">Wooseok Jang</a>,
+                    <a href="https://hg010303.github.io/">Honggyu An</a>,
+                    <strong>Qianqian Wang</strong>,
+                    <a href="https://scholar.google.com/citations?user=cIK1hS8AAAAJ">Seungryong Kim</a>,
+                    <a href="https://ai4ce.github.io/people/chen-feng/">Chen Feng</a>
+                    <br>
+                    <em>CVPR</em>, 2026
+                    <br>
+                    <a href="https://cvlab-kaist.github.io/RobustVGGT/">project page</a> /
+                    <a href="https://arxiv.org/abs/2512.04012">arXiv</a> /
+                    <a href="https://github.com/cvlab-kaist/RobustVGGT">code</a>
+                    <p></p>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td style="padding:20px;width:25%;vertical-align:middle">
+                    <div class="one">
+                      <img class="paper-static-preview" src="images/e_rayzer.jpg?v=20261106" alt="E-RayZer self-supervised learning and 3D reconstruction overview" width="160" height="160">
+                    </div>
+                  </td>
+                  <td style="padding:20px;width:75%;vertical-align:middle">
+                    <a href="https://qitaozhao.github.io/E-RayZer">
+                      <papertitle>E-RayZer: Self-supervised 3D Reconstruction as Spatial Visual Pre-training</papertitle>
+                    </a>
+                    <br>
+                    <a href="https://qitaozhao.github.io/">Qitao Zhao</a>,
+                    <a href="https://airsplay.github.io/">Hao Tan</a>,
+                    <strong>Qianqian Wang</strong>,
+                    <a href="https://sai-bi.github.io/">Sai Bi</a>,
+                    <a href="https://kai-46.github.io/website/">Kai Zhang</a>,
+                    <a href="https://www.kalyans.org/">Kalyan Sunkavalli</a>,
+                    <a href="https://shubhtuls.github.io/">Shubham Tulsiani<sup class="author-marker">†</sup></a>,
+                    <a href="https://hwjiang1510.github.io/">Hanwen Jiang<sup class="author-marker">†</sup></a>
+                    <br>
+                    <em>CVPR</em>, 2026 (<strong>Highlight</strong>)
+                    <br>
+                    <a href="https://qitaozhao.github.io/E-RayZer">project page</a> /
+                    <a href="https://arxiv.org/abs/2512.10950">arXiv</a> /
+                    <a href="https://github.com/QitaoZhao/E-RayZer">code</a>
+                    <p></p>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td style="padding:20px;width:25%;vertical-align:middle">
+                    <div class="one paper-preview">
+                      <img class="paper-preview-poster" src="images/flat_pack_bench.jpg?v=20261106-matched" alt="Flat-Pack Bench animated teaser preview" width="160" height="160">
+                      <video class="paper-preview-video" width="160" height="160" muted loop playsinline preload="metadata" aria-hidden="true">
+                        <source src="images/flat_pack_bench.mp4?v=20261106" type="video/mp4">
+                      </video>
+                    </div>
+                  </td>
+                  <td style="padding:20px;width:75%;vertical-align:middle">
+                    <a href="https://flat-pack-bench.github.io/">
+                      <papertitle>Flat-Pack Bench: Evaluating Spatio-Temporal Understanding in Large Vision-Language Models through Furniture Assembly</papertitle>
+                    </a>
+                    <br>
+                    <a href="https://justachetan.github.io/">Aditya Chetan</a>,
+                    <a href="https://www.linkedin.com/in/ericcai32/">Eric Cai</a>,
+                    <a href="https://peey.github.io/">Peeyush Kushwaha</a>,
+                    <a href="https://bharathrajn.com/">Bharath Raj Nagoor Kani</a>,
+                    <a href="https://utkarshmall.com/">Utkarsh Mall</a>,
+                    <strong>Qianqian Wang</strong>,
+                    <a href="https://www.cs.cornell.edu/~snavely/">Noah Snavely</a>,
+                    <a href="http://home.bharathh.info/">Bharath Hariharan</a>
+                    <br>
+                    <em>CVPR</em>, 2026
+                    <br>
+                    <a href="https://flat-pack-bench.github.io/">project page</a> /
+                    <a href="https://arxiv.org/abs/2605.21625">arXiv</a> /
+                    <a href="https://github.com/justachetan/flat-pack-bench">code</a>
+                    <p></p>
+                  </td>
+                </tr>
 
                 <tr onmouseout="som_stop_all()" onmouseover="som_start_all()">
                   <td style="padding:20px;width:25%;vertical-align:middle">
@@ -1026,7 +1346,7 @@
                     <br>
                     <em>CoRL</em>, 2024 (<strong>Oral</strong>)
                     <br>
-                    <a href="ttps://robot-see-robot-do.github.io/">project page</a>
+                    <a href="https://robot-see-robot-do.github.io/">project page</a>
                     /
                     <a href="https://arxiv.org/abs/2409.18121">arXiv</a>
                     /
